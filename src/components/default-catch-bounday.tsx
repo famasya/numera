@@ -21,14 +21,14 @@ export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
 					type="button"
 					className={`px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded text-white uppercase font-extrabold`}
 				>
-					Try Again
+					Coba Lagi
 				</button>
 				{isRoot ? (
 					<Link
 						to="/"
 						className={`px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded text-white uppercase font-extrabold`}
 					>
-						Home
+						Beranda
 					</Link>
 				) : (
 					<Link
@@ -39,7 +39,7 @@ export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
 							window.history.back();
 						}}
 					>
-						Go Back
+						Kembali
 					</Link>
 				)}
 			</div>

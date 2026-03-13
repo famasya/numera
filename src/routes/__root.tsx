@@ -21,20 +21,16 @@ export const Route = createRootRouteWithContext<{
 				content: "width=device-width, initial-scale=1",
 			},
 			...seo({
-				title: "TanStack Start | Type-Safe, Client-First, Full-Stack React Framework",
-				description: `TanStack Start is a type-safe, client-first, full-stack React framework. `,
+				title: "Numera | Mental model matematika untuk kehidupan nyata",
+				description:
+					"Numera bantu orang dewasa melatih cara berpikir matematika lewat peluang, data, pertumbuhan, dan keputusan sehari-hari.",
+				keywords: "numera, mental math, probabilitas, data, compound effect, keputusan",
 			}),
 		],
 		links: [
 			{ rel: "stylesheet", href: appCss },
-			{ rel: "manifest", href: "/site.webmanifest", color: "#fffff" },
-			{ rel: "icon", href: "/favicon.ico" },
-		],
-		scripts: [
-			{
-				src: "/customScript.js",
-				type: "text/javascript",
-			},
+			{ rel: "manifest", href: "/site.webmanifest", color: "#eef4ff" },
+			{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
 		],
 	}),
 	errorComponent: DefaultCatchBoundary,
@@ -44,11 +40,11 @@ export const Route = createRootRouteWithContext<{
 
 function RootDocument({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en">
+		<html lang="id">
 			<head>
 				<HeadContent />
 			</head>
-			<body className="h-screen w-full">
+			<body className="min-h-screen w-full">
 				{children}
 				<TanStackRouterDevtools position="bottom-right" />
 				<Scripts />
