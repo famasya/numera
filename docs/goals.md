@@ -2,7 +2,7 @@
 
 ## Tujuan utama
 
-**Numera: A Little World of Big Discoveries.** Anak menjelajahi dunia, membantu makhluk ramah, dan memulihkan lingkungan melalui pemikiran matematika. Ini proyek pribadi untuk satu anak TK A; bukan platform EdTech komersial.
+**Numera: A Little World of Big Discoveries.** Anak menjelajahi dunia, membantu makhluk ramah, dan memulihkan lingkungan melalui pemikiran matematika. Ini proyek pribadi dengan batas cakupan belajar usia **3–7 tahun**; bukan platform EdTech komersial. Konteks awal satu anak tetap menjadi titik awal pengamatan bermain. Usia bukan syarat unlock atau bukti kesiapan.
 
 Pengalaman harus terasa seperti permainan yang ingin dijelajahi. Anak dapat menemukan tempat baru, memindahkan benda, mencoba beberapa strategi, melihat akibat tindakannya, dan mencoba lagi tanpa takut salah.
 
@@ -15,6 +15,10 @@ Tablet adalah perangkat utama. Desktop tetap dapat digunakan. Mobile tidak diduk
 Bangun intuisi bilangan, korespondensi satu-satu, kardinalitas, hubungan bagian–keseluruhan, pola, klasifikasi, penalaran spasial, dan pemecahan masalah. Fondasi ini dapat mendukung penalaran lanjut pada masa depan. Jangan mempercepat materi kelas atau memulai latihan olimpiade formal untuk anak ini.
 
 Gunakan guided play dengan tujuan jelas, lintasan belajar sesuai bukti pemahaman, benda konkret digital dan representasi visual yang dapat dikunjungi ulang. Nilai pemahaman dari variasi interaksi selama beberapa sesi. Jangan menyebut satu jawaban benar sebagai mastery. Rujukan dan batas interpretasi ada dalam [pedagogy.md](pedagogy.md).
+
+## Guideline kurikulum
+
+Gabungan Learning Trajectories (LT) dan NRICH menjadi guideline: LT mengorganisasi tujuan/perkembangan, NRICH mendukung kegiatan berbasis masalah dan eksplorasi strategi. Lihat [curriculum.md](curriculum.md) dan [catatan sumber LT](../references/learning-trajectories.md). Target implementasi saat ini tetap 48 misi; perluasan ke beberapa peta belum memiliki jumlah atau susunan final. Seluruh 223 level LT dan 48 misi sudah dipetakan dalam [prds/](../prds/README.md). Requirements mencakup 133 goal utama, fondasi, ekstensi batas, dan level lanjut yang ditunda. Activity briefs dan pengujian tetap diperlukan sebelum menetapkan serta mengimplementasikan peta baru.
 
 ## State dan navigasi canonical
 

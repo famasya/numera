@@ -5,3 +5,6 @@ dist/
 test-results/
 playwright-report/
 .DS_Store
+
+# LT reference: link to publisher; retain user copy locally.
+/references/LT.pdf

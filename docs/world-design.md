@@ -15,3 +15,7 @@ Canonical platform: tablet and desktop. Home/map may scroll; activity screens fi
 Canonical navigation update: four region markers only. Every region opens a native dialog with twelve illustrated mission choices and independent progression states. No individual mission trail loops around the island. Region paths connect landmarks only. The dialog state uses wilayah=<regionId> in the home URL.
 
 All four regions are now playable. Original SVG scene illustrations provide a forest with restoring lanterns, a workshop with restoring flags, and a tower with restoring windows. Map markers show per-region completion; no future/placeholder destination dialog remains.
+
+## Second island design (10 October 2026)
+
+The user requested a separate second map. [Design brief](map-2-design.md) and [artwork](../public/art/numera-island-2.webp) define four large landmark clusters: measurement valley, data village, spatial building workshop, and shared adventure harbor. The first island remains the runtime map. Second-island labels, paths, HTML clusters, routes, mission manifest, and progression are not implemented. Art geometry is decorative; all mathematical interaction remains separate.

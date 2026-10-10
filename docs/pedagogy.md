@@ -1,41 +1,65 @@
-# Pedagogical decisions
+# Pedagogi Numera
 
-Reviewed 9 October 2026. These are design interpretations, not a validated intervention or diagnosis. The game records evidence of interaction, not proof of mastery; parents should observe counting, explanations and strategies with real objects too.
+Ditinjau 10 Oktober 2026. Cakupan belajar usia **3–7 tahun**. Numera memakai **gabungan Learning Trajectories (LT) dan NRICH**: LT memberi struktur tujuan/perkembangan, NRICH memberi prinsip kegiatan berbasis masalah, eksplorasi, dan pembicaraan strategi. Rancangan ini belum merupakan intervensi yang tervalidasi atau diagnosis kemampuan anak.
 
-## Sources and application
+## Sumber dan perannya
 
-- [Learning Trajectories, Clements & Sarama](https://www.learningtrajectories.org/): the accessible overview connects learning goals, developmental progressions and instructional activities. Numera varies arrangements before increasing number range. Detailed activities require registration and were not accessed or copied.
-- [EEF: Improving Mathematics in the Early Years and Key Stage 1](https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/early-maths): the accessible overview supports mathematics in everyday experiences and engaging stories. Numera embeds quantities in garden restoration rather than isolated questions. The overview was reviewed; this project does not claim implementation of the full report.
-- [NAEYC/NCTM: Early Childhood Mathematics, updated 2010](https://www.naeyc.org/sites/default/files/globally-shared/downloads/PDFs/resources/position-statements/psmath.pdf), recommendations 8 and 10, printed pages 8–10: play offers contexts for manipulating mathematical ideas; observation over time and varied evidence inform learning. Numera allows alternate flower distributions and records replay variations and hints. A single completion never unlocks a mastery badge.
-- [NRICH Early Years](https://nrich.maths.org/early-years): attempted twice; the page returned a fetch failure / 403. No exercises were copied and no detailed claims are attributed to inaccessible content. Update 10 October: eleven direct PDFs supplied by the user are now read; see references/nrich-primary.md. Multiple-solution exploration is a product decision also supported by NAEYC/NCTM's discussion of varied approaches in play.
-- [Indonesian PAUD Fase Fondasi reference](https://repositori.kemendikdasmen.go.id/33597/): attempted twice; fetch failed. Curriculum text and edition could not be verified. Indonesian instructions and the TK A context come from the project brief; formal curriculum alignment remains unverified.
+| Sumber | Bagian yang ditelaah | Peran di Numera |
+| --- | --- | --- |
+| [LT, Clements & Sarama](https://www.learningtrajectories.org/documents/1691785025839.pdf) | PDF 32 halaman, 20 trajectory dan 223 level; [catatan sumber](../references/learning-trajectories.md). | Menentukan goal, perkembangan konsep, dan variasi pengalaman. Rentang usia menjadi konteks perencanaan. Kegiatan registrasi LT tidak disalin. |
+| [Sebelas PDF NRICH](../references/nrich-primary.md) | Pattern Making, Packing, The Doorbell Rang, How Long Are You?, Counting Collections, Show Me, Tidying, Hidden Jewels, Presents, Calendar Muddle, Wrapping Parcels. | Masalah bermakna, manipulasi benda, beberapa strategi/solusi, pemeriksaan, dan kegiatan fisik pendamping. Pemetaan rinci: [PRD problem solving](../prds/21-problem-solving.md). |
+| [NAEYC/NCTM](https://www.naeyc.org/sites/default/files/globally-shared/downloads/PDFs/resources/position-statements/psmath.pdf) | Rekomendasi bermain, penalaran, observasi, dan bagian bilangan/geometri yang dicatat dalam [referensi pendidikan](../references/education.md). | Guided play, beberapa pendekatan, dan pengamatan sepanjang beberapa sesi. |
+| [EEF Early Mathematics](https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/early-maths) | Overview dan [developmental progressions poster](https://d2tic4wvo1iusb.cloudfront.net/production/eef-guidance-reports/early-maths/EEF-Developmental-Progressions-Poster-1.0.pdf). | Matematika dalam pengalaman sehari-hari dan perkembangan yang tidak diperlakukan sebagai tahap linear kaku. Laporan utama lengkap belum ditelaah. |
 
-## Three foundation missions
+PDF PAUD yang disediakan pengguna tersedia di `references/`; isinya belum ditelaah dalam pemetaan ini. Keselarasan formal PAUD belum dinyatakan. Batas usia produk berasal dari keputusan pengguna, bukan klaim keselarasan tersebut.
 
-1. **One-to-one correspondence and cardinality.** Exactly five distinct flower objects fit five locations. No duplicate flower can occupy two places. Moving a planted flower back or to another empty place preserves identity. This is concrete digital manipulation; it does not itself prove spoken counting. Replays change spatial arrangement.
-2. **Part and whole.** All five flowers must be in the beds before an arrangement is recorded. All six ordered partitions, including 0/5 and 5/0, are valid. The child can save many alternatives or continue after one discovery. Small colored groups preserve previous discoveries without equations or mandatory exhaustive enumeration. Evidence stores distinct partitions, not colors or movement speed.
-3. **Repeating units.** AB and BA variations contain three missing positions. Mistakes preserve everything already built. A subtle glow, a displayed unit, then a faded matching flower scaffold exploration. AAB becomes available only on a later replay after two completed independent sessions with distinct AB/BA variants. This threshold is an explicitly conservative engineering heuristic, not a research-derived cutoff.
+## Organisasi tujuan
 
-## CPA and adaptation
+[PRD kurikulum](../prds/README.md) mencatat seluruh 223 level LT: 133 goal utama dengan rentang sumber di dalam 3–7, 43 fondasi yang dimulai sebelum 3, 16 ekstensi batas yang berakhir setelah 7, dan 31 level lanjut di luar cakupan sekarang. Scope adalah keputusan perencanaan, bukan tuntutan semua kemampuan pada setiap anak.
 
-Concrete flowers remain available throughout. Pictorial previews and the two colored groups connect objects to quantities. Symbols are deliberately deferred; no arithmetic formula is required. CPA is a set of available representations, not three obligatory screens.
+Trajectory → level/goal → kegiatan dan variasi. Peta/wilayah adalah cerita yang menampung beberapa trajectory. Satu goal membutuhkan beberapa pengalaman; satu misi dapat mendukung beberapa goal. Jumlah peta/misi tambahan mengikuti kebutuhan kegiatan. Empat wilayah dengan 48 misi tetap basis implementasi sekarang.
 
-Attempts mean object placements or saves, not wrong answers. Independent sessions have no requested hints or incorrect pattern placements. Guided completion still opens the next story mission, but does not count toward richer-pattern readiness. There is no speed signal. Counting variants provide additional practice; composition encourages alternative solutions; parent suggestions point back to physical flowers when several hints were needed.
+LT tidak menyediakan trajectory tersendiri untuk puzzle logika Numera. Menara Misteri tetap menjadi ruang problem solving lintas konsep; maze, relasi sebelum, dan Latin grid tidak diberi level LT rekaan.
 
-The system cannot infer verbal counting, strategy, attention or developmental status from taps. The intended child's play session, actual Indonesian speech voice, and physical tablet usability remain empirical checks.
+## Cara anak belajar dalam permainan
 
-## Extended garden
+- Masalah muncul melalui kebutuhan lingkungan/teman; tindakan anak mengubah keadaan yang dapat diperiksa.
+- Anak boleh mencoba, memindahkan kembali, memilih strategi, dan menemukan beberapa solusi valid.
+- Representasi konkret digital dan gambar selalu dapat dikunjungi ulang. Simbol opsional pada kegiatan lanjut; CPA bukan urutan tiga layar wajib.
+- Bantuan bergerak dari mengarahkan perhatian, menunjukkan relasi, hingga demonstrasi sebagian. Bantuan mempertahankan pekerjaan yang benar.
+- Variasi mengubah susunan, jenis kebutuhan, representasi, atau konteks matematis; pergantian warna saja tidak cukup.
+- Problem solving mencakup alternatif solusi, planning, beberapa batasan, eksplorasi sistematis, transfer, dan pemeriksaan alasan. Goal PS-01–PS-06 dijelaskan dalam [PRD NRICH](../prds/21-problem-solving.md).
 
-Nine further missions revisit correspondence, compare and equalize quantities, match dot quantities, classify objects, complete a known whole, order small groups, repair a rule, share fairly, and create a repeating unit. The original problems are documented in mission-plan.md; parent-guides.ts connects each mission to practical observation and primary-source sections. These are project interpretations, not copied exercises or prescribed age thresholds. AA/BB count as valid repeated two-object units. Equal sharing requires 2/2, while free composition continues to accept empty beds.
+## Completion, evidence, dan kesiapan
 
-## Empat wilayah (10 Oktober 2026)
+Penyelesaian cerita membuka perjalanan. Itu bukan bukti level LT tercapai. Game dapat mengetahui keadaan benda, solusi, bantuan, dan variasi; game tidak dapat menyimpulkan ucapan hitung, perhatian, alasan, strategi mental, atau kemampuan fisik dari tap atau kecepatan.
 
-Hutan Pola menyediakan menyalin, melanjutkan, mengisi celah, mengganti aturan atribut, memperbaiki, dan membuat unit. Urutan ini mengacu pada [NRICH Pattern Making](https://nrich.maths.org/content/id/13250/PatternMaking2022.pdf); ABB/AAB/ABC adalah variasi setelah kesiapan, bukan kewajiban berdasarkan umur. Parent Mode membahas aturan dan alasan, bukan kecepatan.
+Pengamatan orang tua diperlukan untuk kardinalitas verbal, subitizing, niat transformasi, dan penjelasan strategi. Orang tua boleh mencatat apa yang terlihat pada variasi tertentu. Tidak ada timer, ranking, sertifikat mastery, atau diagnosis. Contoh kelompok tetap dapat dilihat; tidak ada paparan cepat wajib.
 
-Pulau Bentuk memberi kesempatan mengenali bentuk dalam orientasi berbeda, menggabungkannya menjadi gambar, memutar, mencerminkan, dan menutup bidang. Dasar umum adalah [NAEYC/NCTM, hlm. 20](https://www.naeyc.org/sites/default/files/globally-shared/downloads/PDFs/resources/position-statements/psmath.pdf#page=20) dan [EEF developmental progressions, bagian geometry & spatial thinking](https://d2tic4wvo1iusb.cloudfront.net/production/eef-guidance-reports/early-maths/EEF-Developmental-Progressions-Poster-1.0.pdf). Progresi EEF tidak bersifat tahap linear yang kaku. Tiling dan mirror adalah rancangan original; gambar bentuk mempertahankan jenis geometrisnya saat diputar.
+Kesiapan yang diusulkan mengikuti konsep dan variasi relevan, bukan umur atau total misi. Implementasi sekarang masih memakai heuristik dua sesi pola tanpa bantuan dengan variasi berbeda dan, pada wilayah baru, dua misi berbeda tanpa bantuan. Heuristik itu belum divalidasi untuk cakupan 3–7; [F-06](../prds/00-foundations.md) meminta pemisahan bukti per goal sebelum perluasan.
 
-Menara Misteri memakai jalur, tujuan kunci lalu pintu, komposisi titik, relasi sebelum, dan pemeriksaan baris/kolom. Tujuannya melatih mencoba, memeriksa, menjelaskan, dan mengganti strategi. Landasan umumnya [NAEYC/NCTM, rekomendasi 4, hlm. 5–6](https://www.naeyc.org/sites/default/files/globally-shared/downloads/PDFs/resources/position-statements/psmath.pdf#page=5), bukan klaim bahwa sumber meresepkan Latin grid atau teka-teki ini untuk semua anak TK A. Grid 3×3 punya versi 2×2; orang tua dapat kembali ke benda konkret.
+## Apa yang didukung 48 misi sekarang
 
-Keempat wilayah memiliki urutan cerita sendiri; misi pertama masing-masing terbuka. Penyelesaian membuka cerita, tanpa label mastery. Untuk wilayah baru, dua ID misi berbeda yang selesai tanpa bantuan menjadi prasyarat variasi richer. Ini heuristik konservatif engineering. Variasi tersimpan saat sesi dimulai, tanpa sinyal kecepatan atau perubahan setelah reload.
+[Audit kode](../prds/22-existing-missions.md) menemukan dukungan parsial/konteks untuk 34 level, tanpa menyatakan coverage penuh. Beberapa contoh penting:
 
-Sebelas sumber NRICH, kegiatan rumah yang cocok, dan batas penerapannya dicatat dalam [references/nrich-primary.md](../references/nrich-primary.md). Tidak menerapkan paparan waktu singkat wajib atau rentang angka besar hanya karena sumber mencantumkannya. Ukuran bentuk, titik berat rekaan, dan pengisian grid digital tidak membuktikan pengukuran fisik atau pemahaman verbal. Efektivitas dengan anak dan tablet nyata masih perlu diamati.
+| Pengalaman sekarang | Dukungan dan batas |
+| --- | --- |
+| Lima bunga ke lima lubang | Korespondensi tindakan; ucapan bilangan dan kardinalitas belum terbukti. |
+| Lima bunga ke dua petak | Enam partisi termasuk kosong, alternatif dapat disimpan; belum membuktikan kombinasi bagian diketahui langsung. |
+| Pola AB/BA dan variasi AAB/ABB/ABC | Pengulangan, celah, perbaikan, dan kreasi; transfer antar media serta unit minimal masih membutuhkan kegiatan tersendiri. AA/BB tetap valid. |
+| Berbagi empat buah untuk dua teman | Distribusi sama banyak; belum bukti pecahan bentuk atau semua masalah kelompok. |
+| Siluet, putar, mirror, tiling | Pencocokan/komposisi awal dan transformasi; mirror saat ini membalik urutan token, tiling masih 2D. Bangun ruang dan pengukuran perlu model kegiatan baru. |
+| Timbangan bintang bertitik | Kesetaraan bobot rekaan dan komposisi titik; Presents mendukung kegiatan berat nyata, bukan bukti simulasi fisik. |
+| Jalur, urutan, grid menara | Planning, pemeriksaan hubungan dan batasan; belum bukti membaca peta, analisis data, atau aljabar. |
+
+Panjang, kapasitas, bangun ruang, bagian sama besar, pencatatan kasus, dan strategi bilangan lanjut mempunyai section PRD sendiri. `shape-sizes`, `sharing`, dan puzzle grid tidak digunakan sebagai pengganti tujuan tersebut.
+
+## Parent Mode dan kegiatan nyata
+
+Setiap misi memiliki gagasan matematika, prompt praktis, hal yang diamati, dan referensi primer. Dalam misi, panel hanya menampilkan panduan/catatan aktif; ringkasan dan saran lintas kegiatan tersedia dari peta. Kegiatan dengan benda nyata memberi kesempatan memeriksa kemampuan di luar layar. Cerita, karakter, ilustrasi, dan instruksi sumber dibuat ulang secara original, bukan disalin.
+
+## Validasi dan langkah berikutnya
+
+Requirements lengkap tersedia di [prds/](../prds/README.md); status dan rencana delivery ada di [maps-and-delivery](../prds/23-maps-and-delivery.md). Langkah berikutnya adalah activity briefs dan penguatan celah misi, lalu perluasan paket pengalaman. Pemetaan dokumentasi belum mengubah gameplay, readiness, atau progres.
+
+Validasi teknis, alur Chrome, sentuh tablet fisik, dan pengamatan bermain anak dicatat sebagai bukti yang berbeda. Efektivitas pada rentang usia 3–7, kenyamanan perangkat fisik, dan kesesuaian speech voice Indonesia tetap perlu pengamatan nyata.

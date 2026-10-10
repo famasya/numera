@@ -1,6 +1,6 @@
 # Numera: a little world of big discoveries
 
-An original, local-only adventure for a TK A child. Restore a garden with Lumi, the blue rabbit from the user-provided Rabbits SVG. No scores, deadlines, ads, account, cloud, or runtime inference.
+An original, local-only adventure with a learning scope of ages 3–7, starting from the original single-child context. Restore a garden with Lumi, the blue rabbit from the user-provided Rabbits SVG. No scores, deadlines, ads, account, cloud, or runtime inference.
 
 The opening is the illustrated island, not an onboarding form. Twelve garden missions share one landscape: plant and distribute flowers, feed friends, equalize ponds, match pictured quantities, sort a harvest, complete a whole, order quantities, repair a pattern, share fairly, and create a repeating gate pattern. Changes bring flowers and a flower arch to life. Completed adventures remain replayable.
 

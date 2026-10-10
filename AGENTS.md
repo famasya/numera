@@ -8,13 +8,14 @@
 2. `docs/handoff.md`: keadaan implementasi, risiko, dan langkah berikutnya.
 3. `references/README.md`: sumber, status akses, dan batas klaim.
 4. `references/nrich-primary.md` untuk sebelas PDF NRICH yang sudah dibaca.
-5. `docs/pedagogy.md`, `docs/language.md`, dan `docs/world-design.md` saat mengubah kegiatan, bahasa, atau peta.
+5. `references/learning-trajectories.md`, `docs/curriculum.md`, dan `prds/README.md` untuk guideline gabungan LT + NRICH, pemetaan requirements, dan batas usia 3–7 tahun.
+6. `docs/pedagogy.md`, `docs/language.md`, dan `docs/world-design.md` saat mengubah kegiatan, bahasa, atau peta.
 
 Instruksi terbaru pengguna mengalahkan dokumen ini. Pisahkan fakta kode, keputusan pengguna, usulan, dan hasil yang belum diverifikasi. Perbarui handoff setelah perubahan yang berarti.
 
 ## Tujuan dan batas
 
-- Bangun permainan petualangan matematika untuk satu anak TK A, sekitar 4–5 tahun. Peta dunia adalah navigasi utama. Matematika muncul melalui tindakan dan perubahan lingkungan.
+- Bangun permainan petualangan matematika dengan batas cakupan usia 3–7 tahun. Konteks awal adalah proyek pribadi untuk satu anak; usia bukan syarat unlock atau bukti kesiapan. Peta dunia adalah navigasi utama. Matematika muncul melalui tindakan dan perubahan lingkungan.
 - Platform canonical: tablet; desktop tetap didukung. Mobile tidak didukung. Pada viewport di bawah 768 CSS pixel, tampilkan pesan perangkat tidak didukung dan sembunyikan game. Jangan menghabiskan waktu membuat preview atau gameplay ponsel.
 - Target canonical terbaru: empat wilayah playable, masing-masing 12 misi (48 total). Gunakan `docs/mission-plan.md` dan `docs/world-missions.md` sebagai daftar misi. Status aktual ada dalam handoff; jangan menyatakan fitur selesai sebelum benar-benar playable dan diverifikasi.
 - Utamakan kedalaman penalaran sebelum besarnya angka. Jangan memakai lembar soal, kuis pilihan ganda, skor, peringkat, timer, atau hukuman.

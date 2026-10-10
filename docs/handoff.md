@@ -1,3 +1,47 @@
+# Desain peta kedua — 10 Oktober 2026
+
+- Pengguna meminta desain peta kedua; pulau pertama tetap dipertahankan. Artwork dibuat memakai built-in imagegen dengan pulau pertama sebagai referensi gaya.
+- Aset: `design/maps/numera-island-2.png` (master 1536×1024) dan `public/art/numera-island-2.webp` (354896 byte, Sharp quality 86). [Design brief dan prompt final](map-2-design.md).
+- Empat landmark: Lembah Ukuran, Desa Data, Bengkel Bangun Ruang, Pelabuhan Petualangan. Nama pulau “Pulau Para Pembuat” dan ID/koordinat wilayah adalah usulan desain.
+- PNG dan WebP diperiksa visual: empat destinasi terpisah, gaya/palet selaras, tanpa teks atau UI baked-in. Asset belum dihubungkan ke runtime; belum ada gameplay, manifest, route, progres, atau validasi Chrome/tablet/anak peta kedua.
+- Langkah berikutnya: activity briefs dan manifest tujuan pulau kedua; implementasi selector dua peta dengan URL/migrasi kompatibel; cluster HTML, label, dan path sebagai lapisan terpisah; validasi Chrome/tablet sesuai requirements.
+- Perubahan aset/dokumentasi saja. Tautan lokal dan whitespace diperiksa; tes logic/typecheck/build/Chrome tidak dijalankan.
+
+---
+
+# Pembaruan rujukan LT daring — 10 Oktober 2026
+
+- Instruksi terbaru: gunakan versi daring LT sebagai rujukan canonical. Semua tautan LT di PRD/docs/references menunjuk URL penerbit.
+- `/references/LT.pdf` dikecualikan melalui `.gitignore`; berkas asli pengguna tetap lokal dan tidak dihapus. PDF tidak ditambahkan ke aset aplikasi.
+- Registry dokumentasi memakai URL, halaman/urutan level, scope, dan requirements original; tidak mereproduksi tabel lengkap nama/deskripsi/usia level LT. Seluruh 223 goal requirements dan audit 48 misi tetap tersedia. NRICH tetap dipertahankan.
+- Locator berarti nomor halaman PDF dan urutan level pada halaman mulai 1; registry versi 2 ini hanya dokumentasi, bukan versi progres game.
+- Verifikasi akhir mencakup 223 locator terhadap sumber, 48 ID misi, tautan lokal, pengecualian Git, dan whitespace. Tidak ada perubahan gameplay atau tes browser baru. URL resmi dapat diakses pada sesi ini.
+
+---
+
+# Pembaruan PRD LT + NRICH — 10 Oktober 2026
+
+- Keputusan terbaru: guideline **gabungan LT + NRICH**, usia 3–7; problem solving tetap dipertahankan. Requirements lengkap berada di [prds/README.md](../prds/README.md).
+- Seluruh 20 trajectory/223 level diinventaris: 133 utama, 43 fondasi, 16 batas, 31 lanjut ditunda. Setiap level memiliki goal ID, locator sumber, tujuan kegiatan, scope, dan dukungan misi di `prds/lt-levels.json`; 20 section memuat requirements dan acceptance.
+- Seluruh 48 misi diaudit dari konten, konfigurasi, renderer, validator, readiness, dan storage; [audit](../prds/22-existing-missions.md) menemukan 34 level dengan dukungan parsial/konteks. Tidak ada klaim coverage penuh/mastery atau browser proof baru.
+- Requirements bersama mencakup activity briefs, evidence, kesiapan per konsep, migrasi, URL, tablet, Parent Mode, solver, dan QA. Enam goal problem solving serta sebelas sumber NRICH tetap ada. Peta/paket delivery adalah proposal; jumlah misi/peta baru belum ditetapkan.
+- `docs/pedagogy.md` dirapikan menjadi sumber/prinsip/batas saat ini, tanpa riwayat percobaan akses yang gagal; NRICH tetap dipertahankan. Tidak ada perubahan kode gameplay atau local storage.
+- Pemeriksaan dokumentasi: kelengkapan 223 level terhadap ekstraksi PDF, konsistensi 48 ID misi dengan kode, goal references, tautan lokal, dan diff whitespace. Tes gameplay/typecheck/build/Chrome tidak dijalankan untuk perubahan dokumentasi ini.
+- Langkah berikutnya: activity briefs paket penguatan, kontrak/migrasi goal evidence, lalu implementasi celah dan uji gameplay. Dokumen historis berikut merekam status sebelumnya; pembaruan ini menggantikan pernyataan bahwa inventaris belum disusun.
+
+---
+
+# Pembaruan cakupan kurikulum — 10 Oktober 2026
+
+- Keputusan pengguna: LT menjadi guideline; batas usia terbaru 3–7 tahun menggantikan batas awal TK A/4–5 tahun untuk perencanaan produk.
+- `references/LT.pdf` tersedia, 32 halaman, identik secara SHA-256 dengan PDF daring yang dibaca. Catatan bidang/halaman: [learning-trajectories.md](../references/learning-trajectories.md).
+- [curriculum.md](curriculum.md) memisahkan trajectory, level, kegiatan/variasi, dan peta. Jumlah peta tambahan belum ditentukan; target implementasi sekarang tetap 48 misi.
+- Belum ada inventaris seluruh level atau audit keselarasan 48 misi untuk usia 3–7. Langkah berikutnya: inventaris level, pilih cakupan, petakan misi dan celah pengalaman sebelum menetapkan peta baru.
+- Perubahan dokumentasi saja; tidak ada perubahan gameplay, progres, atau readiness. Tes gameplay, typecheck, build, dan Chrome tidak dijalankan pada pembaruan ini. Tautan lokal dokumen yang diubah diperiksa.
+- PDF PAUD lokal juga tersedia; belum ditelaah pada pembaruan ini. Dokumen historis di bawah mempertahankan konteks usia dan implementasi sebelumnya.
+
+---
+
 # Nama proyek — Numera
 
 Nama canonical sejak 10 Oktober 2026 adalah **Numera**. Nama paket, tampilan, metadata halaman, manifest dan dokumentasi memakai nama baru. Artwork peta berada di `public/art/numera-island.webp`. Kunci `numbara.progress.v1` dan `numbara.session.v1.<missionId>` sengaja dipertahankan untuk membaca progres pengguna yang sudah ada; jangan menggantinya tanpa migrasi. Validasi rename: 97 tes, typecheck, dan build produksi lulus; Chrome memeriksa judul/brand Numera, peta termuat, dan progres lama tetap terlihat. Direktori checkout saat ini tetap `/Users/famasya/dev/abid/numbara`.
