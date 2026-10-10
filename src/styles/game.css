@@ -204,7 +204,7 @@ button svg {
   height: min(57vw, var(--size-690));
   scrollbar-width: none;
   cursor: grab;
-  overscroll-behavior: contain;
+  overscroll-behavior: auto;
 }
 .map-viewport::-webkit-scrollbar {
   display: none;
@@ -2016,12 +2016,10 @@ button svg {
 }
 @media (max-width: 700px) {
   .map-prompt {
-    position: relative;
-    left: auto;
-    bottom: auto;
-    width: auto;
-    max-width: none;
-    margin: var(--space-3);
+    left: var(--space-3);
+    bottom: var(--space-3);
+    max-width: calc(100% - var(--space-6));
+    width: calc(100% - var(--space-6));
   }
   .map-prompt .lumi-map {
     left: calc(var(--space-2) * -1);
@@ -2146,6 +2144,17 @@ button svg {
   border-radius: var(--radius-scene);
   background: var(--color-basket);
   border-bottom: var(--size-6) solid var(--color-basket-edge);
+}
+.production-controls {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+}
+.sort-rule {
+  margin: 0;
+  font-size: var(--font-body);
+  color: var(--color-ink);
+  text-align: center;
 }
 .quantity-dots {
   display: flex;
@@ -2328,18 +2337,6 @@ button svg {
   }
 }
 
-/* Keep the guide below the canvas so all twelve nodes stay visible. */
-.map-prompt {
-  position: relative;
-  left: auto;
-  bottom: auto;
-  max-width: none;
-  margin: var(--space-4);
-  width: auto;
-}
-.zoom-controls {
-  bottom: var(--size-175);
-}
 @media (max-width: 700px) {
   .zoom-controls {
     bottom: var(--size-260);
@@ -2597,17 +2594,7 @@ button svg {
   .world-heading p {
     margin-top: var(--space-1);
   }
-  .world-map {
-    display: grid;
-    grid-template-rows: minmax(0, 1fr) var(--tablet-map-guide-height);
-    min-height: 0;
-  }
-  .map-viewport {
-    height: 100%;
-    min-height: 0;
-  }
   .map-prompt {
-    margin: var(--space-2);
     padding-block: var(--space-2);
     gap: var(--space-4);
   }
@@ -2619,9 +2606,6 @@ button svg {
   }
   .map-prompt p {
     font-size: var(--font-ui);
-  }
-  .zoom-controls {
-    bottom: calc(var(--tablet-map-guide-height) + var(--space-3));
   }
   .world-footer {
     padding-block: var(--space-1);
@@ -2931,10 +2915,11 @@ button svg {
 }
 .assembly-canvas {
   position: relative;
-  width: var(--size-360);
-  height: var(--assembly-height);
-  flex-shrink: 1;
-  min-height: var(--size-173);
+  width: min(calc(var(--assembly-height) * var(--assembly-aspect-ratio)), 100%);
+  height: auto;
+  aspect-ratio: var(--assembly-aspect-ratio);
+  flex-shrink: 0;
+  min-height: 0;
 }
 .assembly-canvas .discovery-slot {
   position: absolute;
@@ -2947,7 +2932,34 @@ button svg {
   min-height: var(--space-12);
 }
 .assembly-canvas .token-art {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
   overflow: hidden;
+}
+.assembly-setting {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+@media (min-width: 768px) and (max-height: 800px) {
+  .puzzle-assembly {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) var(--control-size);
+    justify-items: center;
+    align-items: center;
+  }
+  .puzzle-assembly .discovery-palette {
+    width: 100%;
+    max-width: var(--size-260);
+    flex-wrap: wrap;
+  }
+  .puzzle-assembly .discovery-feedback {
+    grid-column: 1 / -1;
+  }
 }
 .assembly-canvas .discovery-slot:focus-visible {
   outline: var(--size-3) solid var(--color-focus);

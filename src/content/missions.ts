@@ -40,8 +40,8 @@ export const gardenMissions = [
     id: "orders",
     title: "Pesanan bunga",
     instruction: "Tanam bunga sesuai jumlah titik pada petak.",
-    guide: "Hitung titiknya. Pindahkan bunga ke petak itu.",
-    concept: "Menghubungkan kuantitas benda dan gambar titik",
+    guide: "Sisakan bunga yang tidak dibutuhkan di keranjang.",
+    concept: "Membuat jumlah tujuan dari persediaan berlebih",
   },
   {
     id: "sorting",

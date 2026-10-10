@@ -1,6 +1,27 @@
 import type { Puzzle, Token, Tiling, RoutePuzzle } from "../content/puzzles";
 export function sameToken(a: Token, b: Token) {
-  return a.kind === b.kind && (a.turn || 0) === (b.turn || 0);
+  return (
+    a.kind === b.kind &&
+    (a.turn || 0) === (b.turn || 0) &&
+    a.variant === b.variant &&
+    (a.size || 1) === (b.size || 1) &&
+    !!a.reflected === !!b.reflected
+  );
+}
+export function reflectToken(token: Token): Token {
+  return {
+    ...token,
+    turn: (4 - (token.turn || 0)) % 4,
+    reflected: !token.reflected,
+  };
+}
+export function mirrorTokenMatches(actual: Token, original: Token) {
+  const expected = reflectToken(original);
+  return (
+    sameToken(actual, expected) &&
+    actual.color === expected.color &&
+    (actual.size || 1) === (expected.size || 1)
+  );
 }
 export function ribbonValid(
   p: Extract<Puzzle, { kind: "ribbon" }>,
@@ -14,8 +35,10 @@ export function ribbonValid(
     )
   )
     return false;
+  if (p.transfer && values[0] === values[1]) return false;
   return values.every(
-    (v, i) => v === (p.free ? values[i % 2] : p.unit[i % p.unit.length]),
+    (v, i) =>
+      v === (p.free || p.transfer ? values[i % 2] : p.unit[i % p.unit.length]),
   );
 }
 export function latinValid(
@@ -47,7 +70,16 @@ export function slotsValid(p: Puzzle, values: (number | null)[]): boolean {
   if (p.kind === "mirror")
     return (
       values.length === p.left.length &&
-      values.every((v, i) => v === p.left[p.left.length - 1 - i])
+      values.every(
+        (v, i) =>
+          v !== null &&
+          Number.isInteger(v) &&
+          !!p.tokens[v] &&
+          mirrorTokenMatches(
+            p.tokens[v],
+            p.tokens[p.left[p.left.length - 1 - i]],
+          ),
+      )
     );
   if (p.kind === "assembly")
     return (
@@ -214,7 +246,14 @@ export function solveSlots(
       p.free ? i % 2 : p.unit[i % p.unit.length],
     );
   if (p.kind === "sort") return [...p.answers];
-  if (p.kind === "mirror") return [...p.left].reverse();
+  if (p.kind === "mirror") {
+    const result = [...p.left]
+      .reverse()
+      .map((id) =>
+        p.tokens.findIndex((token) => mirrorTokenMatches(token, p.tokens[id])),
+      );
+    return result.includes(-1) ? null : result;
+  }
   if (p.kind === "rotation") return [...p.turns];
   const length =
     p.kind === "assembly"

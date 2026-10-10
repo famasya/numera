@@ -12,7 +12,7 @@ Rentang usia adalah konteks perencanaan, bukan diagnosis, tenggat kemampuan, ata
 
 ## Audit implementasi
 
-[48 misi](../prds/22-existing-missions.md) terpetakan seluruhnya. Ada 34 level dengan dukungan parsial/konteks; tidak ada klaim coverage penuh atau pencapaian anak. Target kode saat ini tetap empat wilayah × 12 misi. Readiness dan evidence belum diubah untuk registry goal baru.
+[48 misi](../prds/22-existing-missions.md) terpetakan seluruhnya. Ada 35 level dengan dukungan parsial/konteks; tidak ada klaim coverage penuh atau pencapaian anak. Target kode saat ini tetap empat wilayah × 12 misi. Readiness dan evidence belum diubah untuk registry goal baru.
 
 Problem solving tetap menjadi tujuan lintas section dan Menara Misteri. [PS-01–PS-06](../prds/21-problem-solving.md) mempertahankan peran sebelas sumber NRICH, tanpa mengarang padanan LT untuk maze atau Latin grid.
 

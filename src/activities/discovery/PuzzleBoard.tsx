@@ -16,6 +16,7 @@ import {
   useSessionValue,
   isPlaces,
   isCount,
+  useMissionSession,
 } from "../../world/progression/session";
 import {
   slotsValid,
@@ -49,12 +50,24 @@ export function PuzzleBoard(props: Props) {
   return <ObjectBoard {...props} puzzle={props.puzzle} />;
 }
 function ObjectBoard({
-  puzzle: p,
+  puzzle: original,
   hint,
   onAttempt,
   onMiss,
   onComplete,
 }: Props & { puzzle: Exclude<Puzzle, { kind: "route" | "tiling" }> }) {
+  const session = useMissionSession();
+  const reclassify = original.kind === "sort" && !!original.firstRule;
+  const [phase, setPhase] = useSessionValue(
+    "sort-phase",
+    () =>
+      reclassify && Array.isArray(session.values["puzzle-values"]) ? 1 : 0,
+    (v) => v === 0 || v === 1,
+  );
+  const p =
+    original.kind === "sort" && original.firstRule && phase === 0
+      ? { ...original, ...original.firstRule }
+      : original;
   const reducedMotion = useReducedMotion();
   const count =
     p.kind === "ribbon"
@@ -83,12 +96,17 @@ function ObjectBoard({
   function commit(next: (number | null)[]) {
     setValues(next);
     setMessage("");
-    if (slotsValid(p, next)) onComplete([next.join(",")]);
+    if (!reclassify && slotsValid(p, next)) onComplete([next.join(",")]);
   }
   function check() {
     onAttempt();
-    if (slotsValid(p, values)) onComplete([values.join(",")]);
-    else {
+    if (slotsValid(p, values)) {
+      if (reclassify && phase === 0) {
+        setPhase(1);
+        setSelected(null);
+        setMessage("Sekarang kelompokkan daun dan jamur menurut jenisnya.");
+      } else onComplete([values.join(",")]);
+    } else {
       onMiss();
       setMessage(
         p.kind === "latin"
@@ -172,9 +190,9 @@ function ObjectBoard({
         }}
       >
         {values[i] !== null ? (
-          <TokenArt token={p.tokens[values[i]!]} />
+          <TokenArt token={p.tokens[values[i]!]} fit={p.kind === "assembly"} />
         ) : example ? (
-          <TokenArt token={example} shadow />
+          <TokenArt token={example} shadow fit={p.kind === "assembly"} />
         ) : (
           <span className="slot-mark" aria-hidden="true" />
         )}
@@ -185,7 +203,10 @@ function ObjectBoard({
           p.kind !== "sort" &&
           p.kind !== "balance" && (
             <span className="ghost-token">
-              <TokenArt token={p.tokens[hintSolution[i]!]} />
+              <TokenArt
+                token={p.tokens[hintSolution[i]!]}
+                fit={p.kind === "assembly"}
+              />
             </span>
           )}
       </button>
@@ -225,7 +246,9 @@ function ObjectBoard({
                   : p.unit
               ).map((v, i) => (
                 <span key={i}>
-                  {v !== null && <TokenArt token={p.tokens[v]} />}
+                  {v !== null && (
+                    <TokenArt token={(p.exampleTokens || p.tokens)[v]} />
+                  )}
                 </span>
               ))}
             </div>
@@ -240,6 +263,22 @@ function ObjectBoard({
           className={`assembly-canvas picture-${p.picture}`}
           aria-label="Gambar yang dibangun"
         >
+          {p.picture === "boat" && (
+            <svg
+              className="assembly-setting"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path d="M50 9V70" stroke="var(--color-ink)" strokeWidth="1" />
+              <path
+                d="M8 96Q18 92 28 96T48 96T68 96T88 96"
+                stroke="var(--color-ocean)"
+                strokeWidth="2"
+                fill="none"
+              />
+            </svg>
+          )}
           {p.targets.map((s, i) =>
             slot(i, s.token, {
               left: `${s.x}%`,
@@ -393,6 +432,13 @@ function ObjectBoard({
           ))}
         </div>
       )}
+      {reclassify && p.kind === "sort" && (
+        <p className="sort-rule" role="status">
+          {phase === 0
+            ? "Kelompokkan benda menurut warna keranjang."
+            : "Kelompokkan benda menurut jenis pada keranjang."}
+        </p>
+      )}
       {p.kind === "balance" && (
         <div className="balance-clue">
           {p.target !== undefined ? (
@@ -435,7 +481,8 @@ function ObjectBoard({
       <div className="discovery-feedback">
         <p aria-live="polite">{message}</p>
         <button className="secondary puzzle-check" onClick={check}>
-          <Check /> Periksa susunan
+          <Check />{" "}
+          {reclassify && phase === 0 ? "Ganti aturan" : "Periksa susunan"}
         </button>
       </div>
     </div>
@@ -651,22 +698,16 @@ function TilingBoard({
             label={`Balok ${i + 1}`}
           >
             <MotionTurn turn={selected === i ? turn : placements[i]?.turn || 0}>
-              <svg viewBox="0 0 100 100" aria-hidden="true">
+              <svg
+                viewBox={`0 0 ${(Math.max(...block.map(([x]) => x)) + 1) * 32} ${(Math.max(...block.map(([, y]) => y)) + 1) * 32}`}
+                aria-hidden="true"
+              >
                 <g>
                   {block.map(([x, y], j) => (
                     <rect
                       key={j}
-                      x={
-                        50 -
-                        ((Math.max(...block.map(([bx]) => bx)) + 1) * 31) / 2 +
-                        x * 31
-                      }
-                      y={
-                        50 -
-                        ((Math.max(...block.map(([, by]) => by)) + 1) * 31) /
-                          2 +
-                        y * 31
-                      }
+                      x={1 + x * 32}
+                      y={1 + y * 32}
                       width="30"
                       height="30"
                       rx="3"

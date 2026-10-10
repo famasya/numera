@@ -1,3 +1,11 @@
+# Verifikasi peta 1 — 11 Oktober 2026
+
+108 tes logika, typecheck dan build produksi lulus. Chrome memainkan seluruh 48 misi sampai selesai pada origin pengujian terpisah, melalui tap/kontrol UI. Penguatan, jawaban tidak sah, koreksi, alternatif sah, replay, Parent Mode dan refresh diuji sesuai [handoff](handoff.md) serta [acceptance paket](../prds/24-map-1-reinforcement.md).
+
+Tablet 1024×768 dan pemeriksaan tambahan siluet pada 800×600. Batas: bukan uji anak, sentuh fisik, seluruh drag atau semua kombinasi variasi. Bukti historis di bawah tidak diganti atau dianggap sebagai hasil pengujian terbaru.
+
+---
+
 # Validasi — 9 Oktober 2026
 
 ## Logika dan build

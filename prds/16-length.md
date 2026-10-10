@@ -1,5 +1,9 @@
 # LEN: Length
 
+## Penempatan peta
+
+**Peta 2.** Lembah Ukuran. Pemilahan besar/kecil peta 1 belum mengukur panjang. Peta 2 masih rencana; lihat [status delivery](23-maps-and-delivery.md).
+
 Status: requirements dirancang, belum implementasi perluasan. Ditinjau 10 Oktober 2026.
 
 ## Goal section

@@ -1,5 +1,9 @@
 # Requirements bersama: LT + NRICH, usia 3–7
 
+## Penempatan peta
+
+**Lintas peta.** Requirements bersama untuk peta 1 dan peta 2. Peta 2 masih rencana; lihat [status delivery](23-maps-and-delivery.md).
+
 Status: keputusan cakupan pengguna dan rancangan requirements, 10 Oktober 2026. Dokumen ini tidak menyatakan perluasan sudah playable. [Index](README.md) memisahkan cakupan sumber, kebutuhan, dan audit kode.
 
 ## Goal produk

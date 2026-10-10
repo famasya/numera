@@ -1,5 +1,9 @@
 # C3D: Composing 3D Shapes
 
+## Penempatan peta
+
+**Peta 2.** Bengkel Bangun Ruang. Balok lantai peta 1 tetap 2D. Peta 2 masih rencana; lihat [status delivery](23-maps-and-delivery.md).
+
 Status: requirements dirancang, belum implementasi perluasan. Ditinjau 10 Oktober 2026.
 
 ## Goal section

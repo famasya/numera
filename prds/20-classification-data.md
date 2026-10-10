@@ -1,5 +1,9 @@
 # DAT: Classification and Data Analysis
 
+## Penempatan peta
+
+**Peta 1 + peta 2.** Peta 1: pemilahan dan reklasifikasi di Hutan Pola/Taman Angka. Peta 2: Desa Data untuk pencatatan kasus dan keputusan. Peta 2 masih rencana; lihat [status delivery](23-maps-and-delivery.md).
+
 Status: requirements dirancang, belum implementasi perluasan. Ditinjau 10 Oktober 2026.
 
 ## Goal section

@@ -1,5 +1,9 @@
 # FRC: Fractions
 
+## Penempatan peta
+
+**Peta 2.** Pelabuhan Petualangan. Berbagi buah di peta 1 belum menjadi kegiatan pecahan. Peta 2 masih rencana; lihat [status delivery](23-maps-and-delivery.md).
+
 Status: requirements dirancang, belum implementasi perluasan. Ditinjau 10 Oktober 2026.
 
 ## Goal section

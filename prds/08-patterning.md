@@ -1,5 +1,9 @@
 # PAT: Patterning
 
+## Penempatan peta
+
+**Peta 1 + peta 2.** Peta 1: Hutan Pola dan Taman Angka. Peta 2: Pelabuhan Petualangan untuk relasi lanjut. Peta 2 masih rencana; lihat [status delivery](23-maps-and-delivery.md).
+
 Status: requirements dirancang, belum implementasi perluasan. Ditinjau 10 Oktober 2026.
 
 ## Goal section
@@ -27,7 +31,7 @@ Setiap goal di bawah wajib memiliki kegiatan original, sedikitnya dua variasi ya
 | PAT-02 | [hlm. 12, level 2](https://www.learningtrajectories.org/documents/1691785025839.pdf#page=12) | fondasi | Mengenali urutan berulang sederhana. | Belum ada |
 | PAT-03 | [hlm. 12, level 3](https://www.learningtrajectories.org/documents/1691785025839.pdf#page=12) | utama | Menyalin, mengisi, memperbaiki, dan melanjutkan AB. | `patterns`, `repair`, `free-pattern`, `forest-copy`, `forest-next`, `forest-gap`, `forest-size`, `forest-transfer`, `forest-pairs`, `forest-double`, `forest-three`, `forest-repair`, `forest-create` |
 | PAT-04 | [hlm. 12, level 4](https://www.learningtrajectories.org/documents/1691785025839.pdf#page=12) | utama | Membangun pola dengan unit AAB, ABB, ABC dan lebih kompleks. | `patterns`, `forest-pairs`, `forest-double`, `forest-three` |
-| PAT-05 | [hlm. 12, level 5](https://www.learningtrajectories.org/documents/1691785025839.pdf#page=12) | utama | Mengidentifikasi unit terkecil dan memindah aturan ke bahan lain. | Belum ada |
+| PAT-05 | [hlm. 12, level 5](https://www.learningtrajectories.org/documents/1691785025839.pdf#page=12) | utama | Mengidentifikasi unit terkecil dan memindah aturan ke bahan lain. | `forest-transfer` (transfer AB; unit minimal belum diminta) |
 | PAT-06 | [hlm. 12, level 6](https://www.learningtrajectories.org/documents/1691785025839.pdf#page=12) | utama | Menghubungkan pola gambar dengan urutan kuantitas. | Belum ada |
 | PAT-07 | [hlm. 12, level 7](https://www.learningtrajectories.org/documents/1691785025839.pdf#page=12) | utama | Menjelajahi aturan bilangan dan kesetaraan dua susunan. | Belum ada |
 | PAT-08 | [hlm. 13, level 1](https://www.learningtrajectories.org/documents/1691785025839.pdf#page=13) | utama | Menggunakan hubungan tambah/kurang tanpa selalu menghitung semua. | Belum ada |

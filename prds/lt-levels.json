@@ -1487,8 +1487,10 @@
       "goal": "Mengidentifikasi unit terkecil dan memindah aturan ke bahan lain",
       "prd": "08-patterning.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "forest-transfer"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 12,
         "levelOnPage": 5

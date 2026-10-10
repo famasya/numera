@@ -6,6 +6,7 @@
   --puzzle-palette-height: 86px;
   --puzzle-board-width: 820px;
   --assembly-height: 250px;
+  --assembly-aspect-ratio: 1.44;
   --color-forest-ground: #c2d89d;
   --color-forest-canopy: #527d50;
   --color-tower-ground: #ede2c5;
@@ -17,7 +18,6 @@
   --tablet-header-height: 64px;
   --tablet-scene-top-height: 68px;
   --tablet-scene-guide-height: 82px;
-  --tablet-map-guide-height: 110px;
   --tablet-map-heading-height: 110px;
   --color-shadow-soft: #2440321f;
   --color-shadow: #24403235;

@@ -106,10 +106,10 @@ const gardenGuides = {
   },
   orders: {
     meaning:
-      "Titik mewakili jumlah bunga yang dibutuhkan. Anak menghubungkan gambar kuantitas dengan benda.",
+      "Titik mewakili jumlah pesanan. Tujuh bunga tersedia; anak membuat jumlah tujuan dan menyisakan bunga di keranjang. Pesanan pertama tiga dan dua; saat bermain ulang berganti dengan dua dan satu.",
     coach:
-      "Pasangkan satu bunga dengan setiap titik. Setelah itu, periksa bersama apakah jumlahnya sesuai.",
-    observe: "Apakah anak mengenali kelompok kecil tanpa menghitung ulang?",
+      "Tanyakan jumlah bunga yang dibutuhkan setiap petak. Biarkan anak menghitung atau memasangkan, lalu tanyakan jumlah semuanya sebelum memeriksa pesanan.",
+    observe: "Apakah anak berhenti pada jumlah tujuan, menyisakan bunga berlebih, dan menyebut jumlah tanpa menghitung ulang? Penyelesaian game belum membuktikan kardinalitas atau subitizing.",
     source: "counting",
   },
   sorting: {

@@ -1,8 +1,12 @@
 # Audit 48 misi terhadap LT dan NRICH
 
-Audit kode 10 Oktober 2026, bukan hasil uji browser baru. Sumber kode: [missions](../src/content/missions.ts), [new-missions](../src/content/new-missions.ts), [puzzles](../src/content/puzzles.ts), [validator taman](../src/pedagogy/concepts.ts), [validator puzzle](../src/pedagogy/puzzles.ts), [Counting](../src/activities/counting/Counting.tsx), [Placement](../src/activities/adventure/Placement.tsx), dan [PuzzleBoard](../src/activities/discovery/PuzzleBoard.tsx).
+## Penempatan peta
 
-48 adalah jumlah konfigurasi misi, bukan jumlah level LT. Ada 34 goal level dengan dukungan parsial/konteks; tidak ada level yang dinyatakan tercakup penuh berdasarkan audit ini. Misi tanpa pasangan level tetap memiliki nilai problem solving; lihat PS-01–PS-06 dalam [PRD NRICH](21-problem-solving.md).
+**Peta 1:** Taman Angka, Hutan Pola, Pulau Bentuk, dan Menara Misteri. Status penguatan terbaru: [paket peta 1](24-map-1-reinforcement.md).
+
+Audit kode diperbarui 11 Oktober 2026; hasil Chrome dan batas bukti ada dalam [paket penguatan](24-map-1-reinforcement.md). Sumber kode: [missions](../src/content/missions.ts), [new-missions](../src/content/new-missions.ts), [puzzles](../src/content/puzzles.ts), [validator taman](../src/pedagogy/concepts.ts), [validator puzzle](../src/pedagogy/puzzles.ts), [Counting](../src/activities/counting/Counting.tsx), [Placement](../src/activities/adventure/Placement.tsx), dan [PuzzleBoard](../src/activities/discovery/PuzzleBoard.tsx).
+
+48 adalah jumlah konfigurasi misi, bukan jumlah level LT. Ada 35 goal level dengan dukungan parsial/konteks; tidak ada level yang dinyatakan tercakup penuh berdasarkan audit ini. Misi tanpa pasangan level tetap memiliki nilai problem solving; lihat PS-01–PS-06 dalam [PRD NRICH](21-problem-solving.md).
 
 | ID misi | Dukungan goal LT | Perilaku kode | Batas dan kebutuhan tambahan |
 | --- | --- | --- | --- |
@@ -11,7 +15,7 @@ Audit kode 10 Oktober 2026, bukan hasil uji browser baru. Sumber kode: [missions
 | `patterns` | [PAT-03](08-patterning.md), [PAT-04](08-patterning.md) | AB/BA dengan celah; variasi AAB setelah readiness. | PAT-04 hanya pada variasi AAB; tidak membuktikan semua unit kompleks. |
 | `matching` | [CMP-02](03-comparing-number.md), [CNT-05](01-counting.md) | Empat buah untuk empat teman, satu per tempat. | Buah-teman adalah korespondensi; pasangan kata bilangan tidak diamati. |
 | `compare` | [CMP-07](03-comparing-number.md), [CMP-08](03-comparing-number.md) | Enam batu dari 4/2 menjadi 3/3. | Tujuan kesetaraan bisa dicapai dengan mencoba; belum meminta pembandingan jumlah atau strategi. |
-| `orders` | [CNT-08](01-counting.md), [SUB-03](02-subitizing.md), [SUB-04](02-subitizing.md) | Lima bunga dibagi sesuai gambar titik 3/2. | Tidak ada persediaan berlebih; menghitung atau mencocokkan titik masih bisa dipakai, bukan bukti subitizing. |
+| `orders` | [CNT-08](01-counting.md), [SUB-03](02-subitizing.md), [SUB-04](02-subitizing.md) | Tujuh bunga tersedia; target titik 3/2 atau 2/1 saat replay, surplus tetap di keranjang. | Produksi jumlah dari surplus tersedia; menghitung/mencocokkan titik masih bisa dipakai, bukan bukti subitizing atau kardinalitas verbal. |
 | `sorting` | [DAT-03](20-classification-data.md), [DAT-04](20-classification-data.md) | Enam daun/bunga dipilah menurut jenis. | Aturan diberikan; belum ada pilihan aturan atau pemilahan ulang. |
 | `missing` | [ADD-05](04-adding-subtracting.md), [COM-04](05-composing-numbers.md) | Dua bunga awal, tambah tiga hingga lima. | Lubang kosong memberi scaffold; banyak perubahan tidak perlu ditentukan anak. |
 | `growing` | [CMP-12](03-comparing-number.md) | Kelompok 1–4 disusun meningkat. | Baru sampai 4; bukan bukti ordinal verbal atau seriasi sampai 5 lengkap. |
@@ -22,24 +26,24 @@ Audit kode 10 Oktober 2026, bukan hasil uji browser baru. Sumber kode: [missions
 | `forest-next` | [PAT-03](08-patterning.md) | Melanjutkan dua elemen sesudah ABAB. | Awal berhenti pada unit lengkap; belum melanjutkan unit parsial. |
 | `forest-gap` | [PAT-03](08-patterning.md) | Dua celah di tengah pola AB. | Belum membuktikan anak mengidentifikasi unit minimal. |
 | `forest-size` | [PAT-03](08-patterning.md) | AB menurut kecil/besar daun. | Mengganti atribut dalam soal belum menjadi transfer oleh anak. |
-| `forest-transfer` | [PAT-03](08-patterning.md) | Menyalin AB daun/lentera dengan token sejenis model. | PAT-05 belum terpenuhi: sumber dan tujuan belum memakai media berbeda. |
+| `forest-transfer` | [PAT-03](08-patterning.md), [PAT-05](08-patterning.md) | Model lingkaran/persegi ditransfer ke daun/lentera; AB atau BA sah. | Transfer lintas bahan tersedia; identifikasi unit minimal belum menjadi tindakan tersendiri. |
 | `forest-pairs` | [PAT-03](08-patterning.md), [PAT-04](08-patterning.md) | AB awal atau ABB setelah readiness. | Pemetaan PAT-04 bersyarat variasi ABB yang benar-benar dimainkan. |
 | `forest-double` | [PAT-03](08-patterning.md), [PAT-04](08-patterning.md) | AB awal atau AAB setelah readiness. | Pemetaan PAT-04 bersyarat variasi AAB. |
 | `forest-three` | [PAT-03](08-patterning.md), [PAT-04](08-patterning.md) | AB awal atau ABC setelah readiness. | Pemetaan PAT-04 bersyarat variasi ABC; belum AABC. |
 | `forest-repair` | [PAT-03](08-patterning.md) | Memperbaiki penyimpangan AB jamur. | Belum perbaikan beberapa unit kompleks. |
 | `forest-colors` | [DAT-03](20-classification-data.md), [DAT-04](20-classification-data.md) | Daun/jamur masuk kategori warna. | Belum memilih aturan sendiri atau mengumpulkan data kasus. |
-| `forest-types` | [DAT-03](20-classification-data.md), [DAT-04](20-classification-data.md), [DAT-05](20-classification-data.md) | Daun/jamur dipilah menurut jenis. | DAT-05 hanya dukungan: misi warna dan jenis belum mereklasifikasi koleksi tersimpan yang sama. |
+| `forest-types` | [DAT-03](20-classification-data.md), [DAT-04](20-classification-data.md), [DAT-05](20-classification-data.md) | Koleksi empat daun/jamur dipilah warna lalu jenis; posisi tetap saat aturan berubah. | Reklasifikasi koleksi yang sama tersedia; pemilihan aturan bebas dan representasi kasus belum tersedia. |
 | `forest-create` | [PAT-03](08-patterning.md) | Unit dua token bebas diulang tiga kali. | AA/BB diterima; belum membuat unit kompleks atau transfer. |
-| `shape-shadows` | [S2D-02](09-2d-shapes.md), [S2D-04](09-2d-shapes.md) | Bentuk dicocokkan dengan target jenis/orientasi. | Ukuran tidak diperiksa sameToken; variasi luas bentuk dan penamaan belum tersedia. |
+| `shape-shadows` | [S2D-02](09-2d-shapes.md), [S2D-04](09-2d-shapes.md) | Bentuk dicocokkan dengan target jenis/orientasi. | Jenis, orientasi, varian, refleksi dan ukuran token diperiksa; penamaan serta variasi seluruh keluarga bentuk belum tersedia. |
 | `shape-sizes` | [DAT-03](20-classification-data.md), [DAT-04](20-classification-data.md) | Bentuk dipilah kecil/besar. | Bukan LEN atau ARE: tidak mengukur panjang atau luas. |
-| `shape-turned` | [S2D-04](09-2d-shapes.md), [S2D-05](09-2d-shapes.md) | Segitiga/persegi dipilah meski orientasi berubah. | Bentuk masih prototipikal; tidak semua segitiga/persegi panjang, sisi atau sudut. |
+| `shape-turned` | [S2D-04](09-2d-shapes.md), [S2D-05](09-2d-shapes.md) | Segitiga tidak simetris/lebar dan persegi dipilah meski orientasi/warna berubah. | Variasi segitiga tersedia; belum semua keluarga persegi panjang, penjelasan sisi/sudut, atau substitusi. |
 | `shape-house` | [C2D-02](10-composing-2d-shapes.md) | Potongan ke siluet atap, badan, pintu. | Slot tiap potongan sudah ditentukan; bukan konstruksi dari sisi atau Shape Composer. |
-| `shape-boat` | [C2D-02](10-composing-2d-shapes.md) | Badan dan dua layar ke siluet berorientasi. | Orientasi token sudah tersedia; anak tidak wajib merencanakan rotasi. |
+| `shape-boat` | [C2D-02](10-composing-2d-shapes.md) | Badan trapesium dan dua layar siku-siku membentuk perahu; tiang/air dekoratif. | Orientasi token sudah tersedia; anak tidak wajib merencanakan rotasi. |
 | `shape-rocket` | [C2D-02](10-composing-2d-shapes.md), [DIS-03](11-disembedding-shapes.md) | Bagian roket termasuk jendela di dalam badan. | DIS-03 hanya konteks containment; tidak ada pencarian bentuk tersembunyi. |
 | `shape-turn` | [VIS-03](14-spatial-visualization.md), [ANG-03](19-angle-turn.md) | Panah diputar per seperempat putaran sesuai model. | Meniru orientasi tidak membuktikan prediksi mental atau pemahaman sudut. |
 | `shape-sails` | [VIS-03](14-spatial-visualization.md), [ANG-03](19-angle-turn.md) | Segitiga diputar sesuai orientasi target. | Belum flip, sudut kontinu, atau perbandingan besar sudut. |
-| `shape-mirror` | [VIS-04](14-spatial-visualization.md), [VIS-05](14-spatial-visualization.md) | Urutan token dibalik di seberang garis cermin. | Dukungan konteks saja: reverse urutan tidak memantulkan geometri token asimetris. |
-| `shape-window` | [VIS-04](14-spatial-visualization.md), [VIS-05](14-spatial-visualization.md) | Empat posisi mengikuti urutan pantulan. | Dukungan konteks saja: belum transformasi bentuk atau sumbu miring. |
+| `shape-mirror` | [VIS-04](14-spatial-visualization.md), [VIS-05](14-spatial-visualization.md) | Urutan dan geometri daun/segitiga asimetris dipantulkan. | Refleksi geometri tersedia; belum prediksi mental atau sumbu miring. |
+| `shape-window` | [VIS-04](14-spatial-visualization.md), [VIS-05](14-spatial-visualization.md) | Empat posisi mengikuti pantulan geometri dan urutan; termasuk daun yang diputar. | Transformasi bentuk tersedia; sumbu miring dan penjelasan mental belum diamati. |
 | `shape-floor` | [C2D-05](10-composing-2d-shapes.md), [ARE-03](17-area.md), [ARE-04](17-area.md) | Tiga domino menutup grid 3×2 tanpa overlap. | Belum menghitung satuan persegi, membuat luas tujuan, atau prediksi komposisi. |
 | `shape-bridge` | [C2D-05](10-composing-2d-shapes.md), [ARE-03](17-area.md), [ARE-04](17-area.md), [VIS-03](14-spatial-visualization.md) | Dua balok siku menutup grid 3×2; dapat diputar. | Masih 2D, bukan C3D; ukuran bidang dan balok tetap. |
 | `tower-path` | [ORI-05](15-spatial-orientation.md), [ORI-06](15-spatial-orientation.md) | Lumi bergerak pada petak 3×3 menghindari batu. | Dukungan orientasi lokal saja; tidak mengubah sudut pandang atau menghubungkan peta dengan dunia. |
@@ -55,15 +59,11 @@ Audit kode 10 Oktober 2026, bukan hasil uji browser baru. Sumber kode: [missions
 | `tower-grid-three` | PS-02 / PS-03, tanpa padanan LT langsung | Grid Latin 2×2 awal, 3×3 setelah readiness. | Tambahan ukuran bukan bukti aljabar; gunakan PS-03/PS-04. |
 | `tower-beacon` | [ORI-05](15-spatial-orientation.md), [ORI-06](15-spatial-orientation.md) | Grid 4×4 dengan kunci, pintu, dan rintangan. | Dukungan perjalanan lokal dan planning; Map User belum tersedia. |
 
-## Perbaikan cakupan prioritas
+## Penguatan dan kebutuhan berikutnya
 
-1. Produksi jumlah dari surplus dan pengamatan kardinalitas: CNT-06/CNT-08; `counting` dan `orders` belum cukup.
-2. Transfer unit lintas bahan dan identifikasi unit minimal: PAT-05; `forest-transfer` perlu tugas sumber/tujuan berbeda.
-3. Variasi bentuk nonprototipikal, sisi/sudut, dan substitusi bentuk: S2D/C2D; jangan sekadar menambah siluet bergambar.
-4. Pantulan geometri token asimetris: VIS; misi mirror sekarang membalik urutan token.
-5. Reklasifikasi koleksi yang sama dan representasi kasus: DAT; sort warna/jenis belum menutup kebutuhan data.
-6. Jalur dengan landmark/peta-ke-dunia: ORI; maze yang ada belum membuktikan penggunaan peta.
-7. Tambahkan pengalaman baru untuk fractions, 3D, length, volume; `sharing`, `shape-sizes`, dan `shape-bridge` tidak boleh digunakan sebagai bukti pengganti.
+Lima celah mekanik paket peta 1 sudah diperkuat: produksi dari surplus, transfer AB lintas bahan, variasi segitiga, refleksi geometri, dan reklasifikasi koleksi yang sama. [Kontrak kegiatan, migrasi, acceptance dan bukti](24-map-1-reinforcement.md).
+
+Kebutuhan berikutnya tetap mencakup pengamatan kardinalitas/subitizing, unit minimal dan unit parsial, sifat/substitusi bentuk, representasi kasus/data, serta landmark/peta-ke-dunia. Pecahan, 3D, panjang dan volume direncanakan pada peta 2; sharing, shape-sizes dan shape-bridge tidak menjadi bukti pengganti. Kelima perbaikan tidak berarti seluruh goal section sudah tercakup.
 
 ## Kesiapan sekarang
 

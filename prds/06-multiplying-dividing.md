@@ -1,5 +1,9 @@
 # MUL: Multiplying / Dividing
 
+## Penempatan peta
+
+**Peta 1 + peta 2.** Peta 1: berbagi di Taman Angka. Peta 2: Pelabuhan Petualangan untuk kelompok dan penerima berbeda. Peta 2 masih rencana; lihat [status delivery](23-maps-and-delivery.md).
+
 Status: requirements dirancang, belum implementasi perluasan. Ditinjau 10 Oktober 2026.
 
 ## Goal section

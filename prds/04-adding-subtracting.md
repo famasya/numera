@@ -1,5 +1,9 @@
 # ADD: Adding / Subtracting
 
+## Penempatan peta
+
+**Peta 1 + peta 2.** Peta 1: Taman Angka dan Menara Misteri memberi konteks awal. Peta 2: Pelabuhan Petualangan untuk perubahan dan unknown. Peta 2 masih rencana; lihat [status delivery](23-maps-and-delivery.md).
+
 Status: requirements dirancang, belum implementasi perluasan. Ditinjau 10 Oktober 2026.
 
 ## Goal section

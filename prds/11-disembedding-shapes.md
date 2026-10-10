@@ -1,5 +1,9 @@
 # DIS: Disembedding Shapes
 
+## Penempatan peta
+
+**Peta 1 + peta 2.** Peta 1: roket di Pulau Bentuk hanya konteks containment. Peta 2: Bengkel Bangun Ruang untuk pencarian/rekonstruksi bentuk. Peta 2 masih rencana; lihat [status delivery](23-maps-and-delivery.md).
+
 Status: requirements dirancang, belum implementasi perluasan. Ditinjau 10 Oktober 2026.
 
 ## Goal section

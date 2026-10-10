@@ -1,5 +1,9 @@
 # S3D: 3D Shapes
 
+## Penempatan peta
+
+**Peta 2.** Bengkel Bangun Ruang. Belum ada mekanik 3D pada peta 1. Peta 2 masih rencana; lihat [status delivery](23-maps-and-delivery.md).
+
 Status: requirements dirancang, belum implementasi perluasan. Ditinjau 10 Oktober 2026.
 
 ## Goal section

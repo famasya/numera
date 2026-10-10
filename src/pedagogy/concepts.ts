@@ -33,6 +33,7 @@ export function placementValid(
   kind: string,
   places: (number | null)[],
 ): boolean {
+  if (kind === "orders") return productionValid(places, [3, 2]);
   if (places.some((p) => p === null)) return false;
   if (kind === "matching")
     return (
@@ -47,13 +48,32 @@ export function placementValid(
     places.filter((p) => p === 0).length,
     places.filter((p) => p === 1).length,
   ];
-  if (kind === "orders")
-    return places.length === 5 && counts[0] === 3 && counts[1] === 2;
   if (kind === "compare")
     return places.length === 6 && counts[0] === 3 && counts[1] === 3;
   if (kind === "sharing")
     return places.length === 4 && counts[0] === 2 && counts[1] === 2;
   return false;
+}
+export function productionValid(places: (number | null)[], targets: number[]) {
+  return (
+    targets.length > 0 &&
+    targets.every((n) => Number.isInteger(n) && n >= 0) &&
+    places.every(
+      (p) =>
+        p === null || (Number.isInteger(p) && p >= 0 && p < targets.length),
+    ) &&
+    targets.every((n, i) => places.filter((p) => p === i).length === n)
+  );
+}
+// Extend the old five-flower snapshot without moving any existing flower.
+export function orderPlaces(saved: unknown): (number | null)[] {
+  if (
+    Array.isArray(saved) &&
+    (saved.length === 5 || saved.length === 7) &&
+    saved.every((p) => p === null || p === 0 || p === 1)
+  )
+    return [...saved, ...Array(7 - saved.length).fill(null)];
+  return Array(7).fill(null);
 }
 export function growingValid(groups: (number | null)[]): boolean {
   return groups.length === 4 && groups.every((g, i) => g === i + 1);

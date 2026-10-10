@@ -45,12 +45,16 @@ export function Growing({ hint, onAttempt, onMiss, onComplete }: Props) {
       setMessage("Perhatikan jumlah batu. Mulai dari yang paling sedikit.");
     }
   }
-  const group = (n: number) => (
+  const group = (n: number, slot?: number) => (
     <Manipulative
       id={n}
       color="var(--flower-muted)"
       selected={selected === n}
-      onSelect={setSelected}
+      onSelect={(id) => {
+        if (slot !== undefined && selected !== null && selected !== id)
+          place(selected, String(slot));
+        else setSelected(id);
+      }}
       onDrop={place}
       label={`Kelompok ${n} batu`}
     >
@@ -77,7 +81,7 @@ export function Growing({ hint, onAttempt, onMiss, onComplete }: Props) {
                 {hint >= 2 ? <Dots count={i + 1} /> : <span>○</span>}
               </button>
             ) : (
-              group(n)
+              group(n, i)
             )}
           </div>
         ))}

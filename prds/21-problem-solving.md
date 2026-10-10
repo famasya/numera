@@ -1,5 +1,9 @@
 # PS: problem solving bersama NRICH dan LT
 
+## Penempatan peta
+
+**Lintas peta.** Problem solving NRICH berlaku di semua wilayah peta 1 dan peta 2; Pelabuhan Petualangan menampung kegiatan gabungan. Peta 2 masih rencana; lihat [status delivery](23-maps-and-delivery.md).
+
 Status: requirements dirancang, 10 Oktober 2026. Problem solving adalah tujuan lintas semua section, juga memiliki kegiatan gabungan di Menara Misteri. PDF LT tidak memiliki trajectory logika/maze/Latin grid tersendiri; tujuan PS tidak ditambahkan sebagai level LT rekaan.
 
 ## Goal dan acceptance eksplisit

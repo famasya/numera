@@ -2,15 +2,21 @@ import {
   useSessionValue,
   isPlaces,
   isBoolean,
+  useMissionSession,
 } from "../../world/progression/session";
 import { useState } from "react";
 import type { MissionId } from "../../content/missions";
 import { Manipulative } from "../../components/Manipulative";
-import { placementValid } from "../../pedagogy/concepts";
+import {
+  placementValid,
+  orderPlaces,
+  productionValid,
+} from "../../pedagogy/concepts";
 import { Dots, ObjectArt } from "./Objects";
 type Props = {
   kind: MissionId;
   hint: number;
+  variation: number;
   onAttempt: () => void;
   onMiss: () => void;
   onComplete: (solutions: string[]) => void;
@@ -18,16 +24,34 @@ type Props = {
 export function Placement({
   kind,
   hint,
+  variation,
   onAttempt,
   onMiss,
   onComplete,
 }: Props) {
   const total =
-    kind === "matching" || kind === "sharing" ? 4 : kind === "orders" ? 5 : 6;
+    kind === "matching" || kind === "sharing" ? 4 : kind === "orders" ? 7 : 6;
   const targets = kind === "matching" ? 4 : 2;
+  const session = useMissionSession();
+  const [orderTargets] = useSessionValue<number[]>(
+    "order-targets",
+    () =>
+      Array.isArray(session.values.places) || variation % 2 === 0
+        ? [3, 2]
+        : [2, 1],
+    (v) =>
+      Array.isArray(v) &&
+      ((v[0] === 3 && v[1] === 2) || (v[0] === 2 && v[1] === 1)) &&
+      v.length === 2,
+  );
   const [places, setPlaces] = useSessionValue<(number | null)[]>(
     "places",
-    () => (kind === "compare" ? [0, 0, 0, 0, 1, 1] : Array(total).fill(null)),
+    () =>
+      kind === "orders"
+        ? orderPlaces(session.values.places)
+        : kind === "compare"
+          ? [0, 0, 0, 0, 1, 1]
+          : Array(total).fill(null),
     (v) => isPlaces(v, total, targets - 1),
   );
   const [selected, setSelected] = useState<number | null>(null);
@@ -52,9 +76,7 @@ export function Placement({
   };
   const desired = (i: number) =>
     kind === "orders"
-      ? i === 0
-        ? 3
-        : 2
+      ? orderTargets[i]
       : kind === "sharing"
         ? 2
         : kind === "compare"
@@ -84,7 +106,7 @@ export function Placement({
     setPlaces(next);
     setSelected(null);
     setMessage("");
-    if (placementValid(kind, next)) {
+    if (kind !== "orders" && placementValid(kind, next)) {
       setFinished(true);
       onComplete([next.join(",")]);
     }
@@ -184,6 +206,39 @@ export function Placement({
       <p className="gentle-message" aria-live="polite">
         {message}
       </p>
+      {kind === "orders" && (
+        <div className="production-controls">
+          <button
+            className="secondary"
+            disabled={finished || selected === null}
+            onClick={() => {
+              if (selected !== null) place(selected, "basket");
+            }}
+          >
+            Kembalikan bunga ke keranjang
+          </button>
+          <button
+            className="secondary puzzle-check"
+            disabled={finished}
+            onClick={() => {
+              onAttempt();
+              if (productionValid(places, orderTargets)) {
+                setFinished(true);
+                onComplete([
+                  places.map((p) => (p === null ? "basket" : p)).join(","),
+                ]);
+              } else {
+                onMiss();
+                setMessage(
+                  "Bandingkan jumlah bunga dengan titik pada setiap petak.",
+                );
+              }
+            }}
+          >
+            Periksa pesanan
+          </button>
+        </div>
+      )}
       {kind === "compare" && (
         <div className="balance-preview" aria-hidden="true">
           <Dots count={places.filter((p) => p === 0).length} />

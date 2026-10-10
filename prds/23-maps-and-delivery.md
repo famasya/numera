@@ -1,5 +1,9 @@
 # Organisasi peta dan delivery
 
+## Penempatan peta
+
+**Lintas peta.** Organisasi, URL, manifest, dan delivery peta 1 serta peta 2. Peta 2 masih rencana; lihat [desain](../docs/map-2-design.md).
+
 Status: proposal organisasi requirements, 10 Oktober 2026. Pengguna menyetujui pemetaan lengkap LT + NRICH usia 3–7. Nama peta, jumlah wilayah/misi baru, dan jadwal implementasi belum ditetapkan. Empat wilayah/48 misi yang ada tetap target implementasi saat ini.
 
 ## Goal organisasi
@@ -30,8 +34,8 @@ Paket bukan peta yang sudah disetujui dan tidak mempunyai kuota misi. Jumlah mis
 ## Urutan delivery dan exit criteria
 
 1. **Registry dan audit:** seluruh 223 level terdaftar, scope jelas, seluruh 48 ID misi terpetakan; PRD saat ini memenuhi tahap dokumentasi ini. Coverage masih audit kode, bukan uji belajar.
-2. **Brief kegiatan dan evidence:** tetapkan model goal/variant serta migrasi; lengkapi kontrak brief untuk paket penguatan. Belum diimplementasikan.
-3. **Penguatan gameplay:** implementasikan celah konkret, jalankan logic/typecheck/build/Chrome dan pengamatan tablet/anak sesuai ketersediaan. Catat batas bukti.
+2. **Brief kegiatan dan evidence:** [brief paket penguatan](24-map-1-reinforcement.md) tersedia; model evidence/kesiapan per goal tetap pekerjaan berikutnya.
+3. **Penguatan gameplay:** lima celah mekanik paket peta 1 diimplementasikan dan 48 alur Chrome diperiksa. Lihat [bukti dan batas](24-map-1-reinforcement.md); tablet fisik/anak belum diuji.
 4. **Paket pengalaman baru:** kembangkan kebutuhan yang belum punya mekanik; tentukan peta/route setelah activity briefs cukup, pertahankan kompatibilitas.
 5. **Cakupan utama lengkap:** setiap dari 133 goal utama punya kegiatan dan variasi yang benar-benar mendukung tujuan, Parent Mode, acceptance khusus, serta status uji yang jujur. Ini target roadmap; tidak berarti setiap anak harus mencapai semua goal.
 6. **Ekstensi batas:** 16 goal batas dipilih satu per satu setelah evaluasi. 31 level sumber usia 8 tidak dijadwalkan; 43 fondasi digunakan sebagai dukungan, bukan produk untuk bayi.

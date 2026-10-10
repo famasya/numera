@@ -6,6 +6,7 @@ export type TokenKind =
   | "square"
   | "triangle"
   | "rectangle"
+  | "trapezoid"
   | "arrow"
   | "star";
 export type Token = {
@@ -14,6 +15,8 @@ export type Token = {
   size?: number;
   turn?: number;
   weight?: number;
+  variant?: "scalene" | "wide" | "right";
+  reflected?: boolean;
 };
 export type Ribbon = {
   kind: "ribbon";
@@ -21,6 +24,8 @@ export type Ribbon = {
   unit: number[];
   initial: (number | null)[];
   copy?: boolean;
+  exampleTokens?: Token[];
+  transfer?: boolean;
   free?: boolean;
   advanced?: boolean;
 };
@@ -30,6 +35,7 @@ export type Sort = {
   bins: Token[];
   answers: number[];
   attribute: "color" | "kind" | "size";
+  firstRule?: { bins: Token[]; answers: number[]; attribute: "color" };
 };
 export type Assembly = {
   kind: "assembly";
@@ -115,7 +121,11 @@ export const puzzles = {
     [t("leaf", 0), t("lantern", 1)],
     [0, 1],
     [null, null, null, null, null, null],
-    { copy: true },
+    {
+      copy: true,
+      transfer: true,
+      exampleTokens: [t("circle", 2), t("square", 2)],
+    },
   ),
   "forest-pairs": ribbon(mushrooms, [0, 1, 1], [0, 1, 1, 0, null, null], {
     advanced: true,
@@ -140,6 +150,11 @@ export const puzzles = {
     bins: [t("leaf", 2), t("mushroom", 2)],
     answers: [0, 1, 0, 1],
     attribute: "kind",
+    firstRule: {
+      bins: [t("circle", 0), t("circle", 1)],
+      answers: [1, 0, 0, 1],
+      attribute: "color",
+    },
   },
   "forest-create": ribbon(
     mushrooms,
@@ -154,8 +169,8 @@ export const puzzles = {
       token,
       x: 15 + i * 33,
       y: 45,
-      w: 24,
-      h: 38,
+      w: 26,
+      h: 37.44,
     })),
     picture: "shadows",
   },
@@ -174,41 +189,78 @@ export const puzzles = {
   "shape-turned": {
     kind: "sort",
     tokens: [
-      t("triangle", 0, 1, 1),
+      { ...t("triangle", 0, 1, 1), variant: "scalene" },
       t("square", 1, 1, 1),
-      t("triangle", 2, 1, 2),
+      { ...t("triangle", 2, 1, 2), variant: "wide" },
       t("square", 0, 1, 0),
     ],
     bins: [t("triangle", 0), t("square", 1)],
     answers: [0, 1, 0, 1],
     attribute: "kind",
   },
-  "shape-house": {kind:"assembly", tokens:[t("square",1),t("triangle",0),t("rectangle",2,1,1)], targets:[{token:t("triangle",0),x:50,y:36,w:48,h:50},{token:t("square",1),x:50,y:65,w:44,h:50},{token:t("rectangle",2,1,1),x:50,y:73,w:20,h:28}],picture:"house"},
+  "shape-house": {
+    kind: "assembly",
+    tokens: [t("square", 1), t("triangle", 0), t("rectangle", 2, 1, 1)],
+    targets: [
+      { token: t("triangle", 0), x: 50, y: 22, w: 64, h: 32 },
+      { token: t("square", 1), x: 50, y: 66, w: 38.8889, h: 56 },
+      { token: t("rectangle", 2, 1, 1), x: 50, y: 78.5, w: 17, h: 31 },
+    ],
+    picture: "house",
+  },
   "shape-boat": {
     kind: "assembly",
-    tokens: [t("rectangle", 1), t("triangle", 0, 1, 1), t("triangle", 2)],
+    tokens: [
+      t("trapezoid", 1),
+      { ...t("triangle", 0), variant: "right", reflected: true },
+      { ...t("triangle", 2), variant: "right" },
+    ],
     targets: [
-      { token: t("rectangle", 1), x: 50, y: 76, w: 60, h: 20 },
-      { token: t("triangle", 0, 1, 1), x: 38, y: 43, w: 30, h: 42 },
-      { token: t("triangle", 2), x: 66, y: 46, w: 25, h: 38 },
+      { token: t("trapezoid", 1), x: 50, y: 81, w: 72, h: 24 },
+      {
+        token: { ...t("triangle", 0), variant: "right", reflected: true },
+        x: 33,
+        y: 38.5,
+        w: 32,
+        h: 53,
+      },
+      {
+        token: { ...t("triangle", 2), variant: "right" },
+        x: 66,
+        y: 44,
+        w: 30,
+        h: 42,
+      },
     ],
     picture: "boat",
   },
   "shape-rocket": {
     kind: "assembly",
     tokens: [
-      t("rectangle", 1),
+      t("rectangle", 1, 1, 1),
       t("triangle", 0),
       t("circle", 2),
-      t("triangle", 0, 1, 3),
-      t("triangle", 0, 1, 1),
+      { ...t("triangle", 0), variant: "right", reflected: true },
+      { ...t("triangle", 0), variant: "right" },
     ],
     targets: [
-      { token: t("rectangle", 1), x: 50, y: 53, w: 20, h: 45 },
+      { token: t("rectangle", 1, 1, 1), x: 50, y: 57, w: 24, h: 52 },
       { token: t("triangle", 0), x: 50, y: 19, w: 24, h: 24 },
-      { token: t("circle", 2), x: 50, y: 48, w: 10, h: 14 },
-      { token: t("triangle", 0, 1, 3), x: 34, y: 75, w: 18, h: 25 },
-      { token: t("triangle", 0, 1, 1), x: 66, y: 75, w: 18, h: 25 },
+      { token: t("circle", 2), x: 50, y: 51, w: 16.6667, h: 24 },
+      {
+        token: { ...t("triangle", 0), variant: "right", reflected: true },
+        x: 29.5,
+        y: 79,
+        w: 17,
+        h: 26,
+      },
+      {
+        token: { ...t("triangle", 0), variant: "right" },
+        x: 70.5,
+        y: 79,
+        w: 17,
+        h: 26,
+      },
     ],
     picture: "rocket",
   },
@@ -224,10 +276,28 @@ export const puzzles = {
     turns: [2, 3, 1],
     initial: [0, 0, 0],
   },
-  "shape-mirror": { kind: "mirror", tokens: shapes, left: [0, 1, 2] },
+  "shape-mirror": {
+    kind: "mirror",
+    tokens: [
+      t("leaf", 0),
+      t("leaf", 1, 1, 1),
+      { ...t("triangle", 2), variant: "scalene" },
+      { ...t("leaf", 0), reflected: true },
+      { ...t("leaf", 1, 1, 3), reflected: true },
+      { ...t("triangle", 2), variant: "scalene", reflected: true },
+    ],
+    left: [0, 1, 2],
+  },
   "shape-window": {
     kind: "mirror",
-    tokens: [t("triangle", 0), t("circle", 1), t("square", 2)],
+    tokens: [
+      { ...t("triangle", 0), variant: "scalene" },
+      t("leaf", 1),
+      t("leaf", 2, 1, 1),
+      { ...t("triangle", 0), variant: "scalene", reflected: true },
+      { ...t("leaf", 1), reflected: true },
+      { ...t("leaf", 2, 1, 3), reflected: true },
+    ],
     left: [2, 0, 1, 0],
   },
   "shape-floor": {

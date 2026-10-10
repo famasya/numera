@@ -1,3 +1,19 @@
+# Penguatan dan verifikasi peta 1 — 11 Oktober 2026
+
+- Lima celah mekanik diperkuat: pesanan dari tujuh bunga dengan surplus/variasi 3–2 dan 2–1; transfer AB lingkaran/persegi ke daun/lentera dengan dua korespondensi sah; koleksi yang sama dipilah warna lalu jenis; segitiga tidak simetris/lebar; pantulan geometri daun/segitiga beserta pembalikan posisi. [Brief dan acceptance](../prds/24-map-1-reinforcement.md).
+- Pulau Bentuk: frame SVG rapat dan rasio canvas tetap memperbaiki siluet rumah/perahu/roket. Perahu memakai trapesium dan layar siku-siku; roket memakai badan tegak, ujung, jendela lingkaran serta sirip. Preview balok mengisi frame geometri. Pada layar pendek, gambar dan palette berdampingan; hitbox tidak diperkecil.
+- Klarifikasi pengguna: latar harus lebih natural, bukan netral; dekorasi disukai. Dekorasi bengkel dipertahankan. Bendera sekarang melekat pada tali lengkung dengan sudut mengikuti tali, tepi kain melengkung, dan lipatan.
+- Bug yang ditemukan dalam alur Chrome: susunan kelompok batu yang terisi tidak dapat ditukar lewat tap. `growing` kini menukar kelompok lewat tap maupun drag. Pesanan mempunyai tombol eksplisit untuk mengembalikan bunga ke keranjang.
+- Route, 48 ID misi, dan kunci progres tetap. Snapshot lima bunga diperluas tanpa memindahkan bunga; fase sort dan target pesanan tersimpan. Penyelesaian lama tetap, tanpa konversi menjadi mastery. Snapshot sort lama melanjutkan aturan jenis; replay memulai warna dahulu.
+- Seluruh PRD mencantumkan penempatan peta/wilayah; indeks mempunyai kolom Peta. Registry/audit kini 35 goal dengan dukungan parsial setelah menambahkan PAT-05. Peta 2 masih aset/desain dan rencana kegiatan, belum runtime.
+- Validasi: **108 tes dalam lima file**, typecheck dan build produksi lulus. Build masih mengeluarkan warning module-level directives dari dependency; tidak menggagalkan build. Tautan lokal PRD/docs, registry 223 goal/35 dukungan, serta whitespace diperiksa.
+- Chrome pada origin pengujian `127.0.0.1:3010`: **seluruh 48 misi** dimainkan hingga selesai lewat UI, termasuk ABB/AAB/ABC hutan dan grid 3×3 menara. Perbaikan diuji dengan jumlah berlebih, alternatif transfer, dua fase sort, pantulan asli yang ditolak, tap swap kelompok, kunci sebelum pintu, replay pesanan, refresh susunan/fase/pantulan/target/completion, serta panduan aktif. Satu alur per misi tidak membuktikan semua kombinasi solusi/variasi.
+- Layout diukur pada 1024×768; tambahan 800×600 untuk siluet. Area gambar mempertahankan rasio 1.44, lingkaran tetap bulat, target roket ≥48 CSS px, dan aktivitas yang diukur tanpa scroll halaman. Sentuh tablet fisik, anak, drag seluruh mekanik, dan semua viewport belum diuji. Dekorasi dan perbaikan bentuk diperiksa melalui screenshot Chrome.
+- Perubahan CSS peta/guide yang sudah ada di working tree selama kelanjutan ini dipertahankan; bukan bagian penguatan gameplay ini. Jangan menimpa pekerjaan tersebut.
+- Langkah berikutnya: evidence dan kesiapan per goal, brief peta 2, unit pola minimal/parsial, substitusi bentuk, data untuk keputusan, dan peta-ke-dunia. Lima perbaikan dan 48 alur tidak berarti seluruh roadmap 133 goal utama sudah selesai.
+
+---
+
 # Desain peta kedua — 10 Oktober 2026
 
 - Pengguna meminta desain peta kedua; pulau pertama tetap dipertahankan. Artwork dibuat memakai built-in imagegen dengan pulau pertama sebagai referensi gaya.

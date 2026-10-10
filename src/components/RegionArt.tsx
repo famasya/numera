@@ -217,21 +217,41 @@ export function RegionArt({
             strokeWidth="4"
             fill="none"
           />
-          {Array.from({ length: 12 }, (_, i) => (
-            <path
-              key={i}
-              d={`M${200 + i * 68} ${82 + Math.sin((i / 11) * Math.PI) * 42}l40 3l-20 42Z`}
-              fill={
-                i < completed
-                  ? [
-                      "var(--flower-pink)",
-                      "var(--flower-yellow)",
-                      "var(--flower-purple)",
-                    ][i % 3]
-                  : "var(--flower-muted)"
-              }
-            />
-          ))}
+          {Array.from({ length: 12 }, (_, i) => {
+            const t = (i + 0.5) / 12;
+            // Position and angle come from the same quadratic curve as the rope.
+            const x = 160 + 880 * t;
+            const y =
+              (1 - t) * (1 - t) * 70 + 2 * (1 - t) * t * 170 + t * t * 65;
+            const slope = (200 - 410 * t) / 880;
+            const angle = (Math.atan(slope) * 180) / Math.PI;
+            const color =
+              i < completed
+                ? [
+                    "var(--flower-pink)",
+                    "var(--flower-yellow)",
+                    "var(--flower-purple)",
+                  ][i % 3]
+                : "var(--flower-muted)";
+            return (
+              <g key={i} transform={`translate(${x} ${y}) rotate(${angle})`}>
+                <path
+                  d="M-19 1Q0 5 19 1Q17 17 9 30Q3 41-2 48Q-8 31-12 21Q-17 10-19 1Z"
+                  fill={color}
+                />
+                <path
+                  d="M0 5Q3 24-2 46Q5 35 9 30Q17 17 19 1Z"
+                  fill="var(--color-shadow-soft)"
+                />
+                <path
+                  d="M-18 2Q0 6 18 2"
+                  stroke="var(--flower-outline)"
+                  strokeWidth="2"
+                  fill="none"
+                />
+              </g>
+            );
+          })}
           <g transform="translate(45 598)">
             <rect width="74" height="60" rx="5" fill="var(--flower-yellow)" />
             <path d="M84 60L125-5L160 60Z" fill="var(--flower-pink)" />

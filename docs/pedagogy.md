@@ -1,6 +1,6 @@
 # Pedagogi Numera
 
-Ditinjau 10 Oktober 2026. Cakupan belajar usia **3–7 tahun**. Numera memakai **gabungan Learning Trajectories (LT) dan NRICH**: LT memberi struktur tujuan/perkembangan, NRICH memberi prinsip kegiatan berbasis masalah, eksplorasi, dan pembicaraan strategi. Rancangan ini belum merupakan intervensi yang tervalidasi atau diagnosis kemampuan anak.
+Ditinjau 11 Oktober 2026. Cakupan belajar usia **3–7 tahun**. Numera memakai **gabungan Learning Trajectories (LT) dan NRICH**: LT memberi struktur tujuan/perkembangan, NRICH memberi prinsip kegiatan berbasis masalah, eksplorasi, dan pembicaraan strategi. Rancangan ini belum merupakan intervensi yang tervalidasi atau diagnosis kemampuan anak.
 
 ## Sumber dan perannya
 
@@ -40,15 +40,17 @@ Kesiapan yang diusulkan mengikuti konsep dan variasi relevan, bukan umur atau to
 
 ## Apa yang didukung 48 misi sekarang
 
-[Audit kode](../prds/22-existing-missions.md) menemukan dukungan parsial/konteks untuk 34 level, tanpa menyatakan coverage penuh. Beberapa contoh penting:
+[Audit kode](../prds/22-existing-missions.md) menemukan dukungan parsial/konteks untuk 35 level, tanpa menyatakan coverage penuh. Beberapa contoh penting:
 
 | Pengalaman sekarang | Dukungan dan batas |
 | --- | --- |
 | Lima bunga ke lima lubang | Korespondensi tindakan; ucapan bilangan dan kardinalitas belum terbukti. |
+| Pesanan dari tujuh bunga | Target 3/2 atau 2/1, dengan surplus tetap di keranjang; pengamatan kardinalitas/subitizing melalui pendampingan. |
+| Koleksi daun/jamur yang sama | Warna kemudian jenis; perpindahan identitas dan jumlah total dapat diperiksa. Belum pencatatan kasus/data untuk keputusan. |
 | Lima bunga ke dua petak | Enam partisi termasuk kosong, alternatif dapat disimpan; belum membuktikan kombinasi bagian diketahui langsung. |
-| Pola AB/BA dan variasi AAB/ABB/ABC | Pengulangan, celah, perbaikan, dan kreasi; transfer antar media serta unit minimal masih membutuhkan kegiatan tersendiri. AA/BB tetap valid. |
+| Pola AB/BA dan variasi AAB/ABB/ABC | Pengulangan, celah, perbaikan, dan kreasi; transfer AB lintas bahan tersedia di `forest-transfer`; identifikasi unit minimal belum diminta. AA/BB tetap valid. |
 | Berbagi empat buah untuk dua teman | Distribusi sama banyak; belum bukti pecahan bentuk atau semua masalah kelompok. |
-| Siluet, putar, mirror, tiling | Pencocokan/komposisi awal dan transformasi; mirror saat ini membalik urutan token, tiling masih 2D. Bangun ruang dan pengukuran perlu model kegiatan baru. |
+| Siluet, putar, mirror, tiling | Pencocokan/komposisi awal dan transformasi; mirror memantulkan geometri daun/segitiga asimetris sekaligus membalik urutan, tiling masih 2D. Bangun ruang dan pengukuran perlu model kegiatan baru. |
 | Timbangan bintang bertitik | Kesetaraan bobot rekaan dan komposisi titik; Presents mendukung kegiatan berat nyata, bukan bukti simulasi fisik. |
 | Jalur, urutan, grid menara | Planning, pemeriksaan hubungan dan batasan; belum bukti membaca peta, analisis data, atau aljabar. |
 
@@ -60,6 +62,6 @@ Setiap misi memiliki gagasan matematika, prompt praktis, hal yang diamati, dan r
 
 ## Validasi dan langkah berikutnya
 
-Requirements lengkap tersedia di [prds/](../prds/README.md); status dan rencana delivery ada di [maps-and-delivery](../prds/23-maps-and-delivery.md). Langkah berikutnya adalah activity briefs dan penguatan celah misi, lalu perluasan paket pengalaman. Pemetaan dokumentasi belum mengubah gameplay, readiness, atau progres.
+Requirements lengkap tersedia di [prds/](../prds/README.md); status dan rencana delivery ada di [maps-and-delivery](../prds/23-maps-and-delivery.md). [Penguatan peta 1](../prds/24-map-1-reinforcement.md) sudah mengubah produksi dari surplus, transfer pola, variasi segitiga, pantulan geometri, dan reklasifikasi. Langkah berikutnya adalah evidence/kesiapan per goal dan brief kegiatan peta 2; readiness dan skema progres tetap memakai model lama.
 
 Validasi teknis, alur Chrome, sentuh tablet fisik, dan pengamatan bermain anak dicatat sebagai bukti yang berbeda. Efektivitas pada rentang usia 3–7, kenyamanan perangkat fisik, dan kesesuaian speech voice Indonesia tetap perlu pengamatan nyata.

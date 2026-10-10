@@ -309,6 +309,7 @@ function GardenSession({ index, progress, onRecord, onExit, onNext }: Props) {
           />
         ) : (
           <Placement
+            variation={runs + round}
             kind={mission.id}
             hint={level}
             onAttempt={attempt}
