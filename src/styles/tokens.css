@@ -14,11 +14,13 @@
   --color-workshop-ground: #e5edcb;
   --line-height-label: 1.25;
   --picker-max-width: 960px;
+  --concept-dialog-max-width: 1140px;
   --picker-item-height: 126px;
   --tablet-header-height: 64px;
   --tablet-scene-top-height: 68px;
   --tablet-scene-guide-height: 82px;
   --tablet-map-heading-height: 110px;
+  --concept-map-height: 340px;
   --color-shadow-soft: #2440321f;
   --color-shadow: #24403235;
   --color-backdrop: #24403280;

@@ -1,3 +1,28 @@
+# Klarifikasi tujuan belajar untuk orang tua — 11 Oktober 2026
+
+- Seluruh 48 tujuan belajar ditulis ulang sebagai kemampuan konseptual yang ingin dikembangkan pada anak. Kata-kata tugas seperti mengambil kunci, menyusun roket, atau menempatkan bunga diganti dengan hubungan jumlah, struktur pola, sifat bentuk, posisi, urutan, serta strategi yang relevan.
+- Parent Help dan peta konsep tetap memakai sumber bersama. Rincian tindakan misi berada di kartu Kegiatan; tujuan bukan pernyataan bahwa anak sudah menguasainya.
+- Validasi perubahan teks: typecheck dan whitespace diperiksa. Mekanik, rendering, dan progres tidak berubah; tes gameplay/build/Chrome tidak diulang.
+
+---
+
+# Kartu panduan orang tua — 11 Oktober 2026
+
+- Setiap bagian panduan menjadi kartu terpisah: tujuan belajar, mengapa penting, kegiatan, dampingi, amati, coba di rumah (bila tersedia), dan referensi. Parent Help dan detail peta konsep memakai gaya kartu yang sama dengan token warna, jarak, border, dan radius proyek.
+- Typecheck dan build lulus; Chrome memeriksa tujuh kartu Pesanan bunga melalui DOM dan screenshot. Tidak ada perubahan gameplay atau progres; tes logika tidak diulang untuk perubahan tampilan ini.
+
+---
+
+# Tujuan dan manfaat konsep di panduan orang tua — 11 Oktober 2026
+
+- Sesuai klarifikasi pengguna, informasi hadir di Parent Help serta detail peta konsep baru. Setiap dari 48 misi mempunyai “Tujuan belajar” dan “Mengapa penting”; empat wilayah mempunyai ringkasan pada peta konsep.
+- `src/content/learning-purpose.ts` menjadi sumber bersama; `LearningPurpose` dipakai kedua panel. Tujuan khusus kegiatan dipisahkan dari makna, prompt, observasi, dan sumber yang sudah ada. Contoh sehari-hari adalah penjelasan desain, bukan klaim efektivitas atau mastery.
+- Peta konsep/dependency/CSS yang baru ditambahkan pengguna dipertahankan. Perubahan ini hanya mengintegrasikan penjelasan ke detailnya; tidak mengubah mekanik, progres, atau instruksi anak.
+- Validasi: 108 tes, typecheck, dan build produksi lulus. Chrome memeriksa ringkasan wilayah Taman Angka, detail Pesanan bunga, tombol masuk misi, dan Parent Help aktif dengan teks yang sama. Screenshot Parent Help diperiksa; semua 48 panel dan tablet fisik belum diperiksa satu per satu.
+- F-18 dan pedagogi diperbarui. Langkah berikutnya: penjelasan tujuan untuk kegiatan baru saat peta 2 diimplementasikan.
+
+---
+
 # Penguatan dan verifikasi peta 1 — 11 Oktober 2026
 
 - Lima celah mekanik diperkuat: pesanan dari tujuh bunga dengan surplus/variasi 3–2 dan 2–1; transfer AB lingkaran/persegi ke daun/lentera dengan dua korespondensi sah; koleksi yang sama dipilah warna lalu jenis; segitiga tidak simetris/lebar; pantulan geometri daun/segitiga beserta pembalikan posisi. [Brief dan acceptance](../prds/24-map-1-reinforcement.md).

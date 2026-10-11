@@ -31,6 +31,7 @@ Numera memberi pengalaman matematika melalui petualangan, manipulasi benda, eksp
 | F-15 | Animasi Motion mengikuti state deterministik dan reduced motion; fisika hanya bila kegiatan membutuhkan tumbukan/tumpukan bebas. | Timbangan/geometri/volume benar pada animasi aktif maupun reduced motion; state target identik. Geometri artwork dibedakan dari data matematis. |
 | F-16 | Validasi gameplay mencakup logika, pnpm typecheck/build, alur Chrome, persistence, replay, dan alternatif solusi. | Catat hasil aktual per misi/goal. Pengujian Chrome tidak menjadi klaim sentuh tablet fisik atau efektivitas bersama anak. |
 | F-17 | Tiap perluasan menyediakan kegiatan nyata yang relevan dan kesempatan anak mencoba/menjelaskan. | Parent guide menyebut benda, prompt, observasi, rujukan dan batas. Jangan menyalin karakter, cerita buku, artwork, atau instruksi sumber. |
+| F-18 | Parent Help dan detail peta konsep memperkenalkan tujuan belajar serta mengapa konsep itu penting, dengan contoh penggunaan yang konkret. Keduanya memakai satu sumber konten. | Seluruh 48 misi mempunyai tujuan dan alasan; empat wilayah mempunyai ringkasan tujuan/alasan di peta konsep. Instruksi anak tetap singkat. Penjelasan manfaat tidak menjadi klaim penguasaan atau efektivitas. |
 
 ## Kontrak activity brief sebelum implementasi
 

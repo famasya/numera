@@ -58,7 +58,7 @@ Panjang, kapasitas, bangun ruang, bagian sama besar, pencatatan kasus, dan strat
 
 ## Parent Mode dan kegiatan nyata
 
-Setiap misi memiliki gagasan matematika, prompt praktis, hal yang diamati, dan referensi primer. Dalam misi, panel hanya menampilkan panduan/catatan aktif; ringkasan dan saran lintas kegiatan tersedia dari peta. Kegiatan dengan benda nyata memberi kesempatan memeriksa kemampuan di luar layar. Cerita, karakter, ilustrasi, dan instruksi sumber dibuat ulang secara original, bukan disalin.
+Setiap misi memiliki gagasan matematika, prompt praktis, hal yang diamati, dan referensi primer. Parent Help dan detail misi pada peta konsep juga menampilkan tujuan belajar dan alasan pentingnya dengan contoh sehari-hari. Semua 48 misi memakai sumber konten bersama; empat wilayah mempunyai ringkasan tujuan/alasan. Penjelasan ini adalah tujuan desain Numera, bukan klaim hasil belajar anak. Dalam misi, panel hanya menampilkan panduan/catatan aktif; ringkasan dan saran lintas kegiatan tersedia dari peta. Kegiatan dengan benda nyata memberi kesempatan memeriksa kemampuan di luar layar. Cerita, karakter, ilustrasi, dan instruksi sumber dibuat ulang secara original, bukan disalin.
 
 ## Validasi dan langkah berikutnya
 

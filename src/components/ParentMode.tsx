@@ -1,3 +1,5 @@
+import { missionPurpose } from "../content/learning-purpose";
+import { LearningPurpose } from "./LearningPurpose";
 import { X, Flower2, Lightbulb, Sprout } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { parentGuides, parentSources } from "../content/parent-guides";
@@ -80,19 +82,22 @@ export function ParentMode({
                   open={m.id === activeMission}
                 >
                   <summary>Materi dan cara mendampingi</summary>
-                  <p>{guide.meaning}</p>
-                  <p>
+                  <LearningPurpose purpose={missionPurpose[m.id]} />
+                  <p className="parent-guide-card">
+                    <strong>Kegiatan:</strong> {guide.meaning}
+                  </p>
+                  <p className="parent-guide-card">
                     <strong>Dampingi:</strong> {guide.coach}
                   </p>
-                  <p>
+                  <p className="parent-guide-card">
                     <strong>Amati:</strong> {guide.observe}
                   </p>
                   {guide.nextActivity && (
-                    <p>
+                    <p className="parent-guide-card">
                       <strong>Coba di rumah:</strong> {guide.nextActivity}
                     </p>
                   )}
-                  <p>
+                  <p className="parent-guide-card">
                     <strong>Referensi:</strong>{" "}
                     <a href={source.url} target="_blank" rel="noreferrer">
                       {source.label}

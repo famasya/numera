@@ -164,21 +164,27 @@ button svg {
   font-size: var(--font-ui);
   color: var(--color-ink);
 }
-.journey-note {
+.concept-entry {
   display: flex;
   gap: var(--space-3);
   align-items: center;
-  font-size: var(--font-ui);
+  min-height: var(--control-size);
+  padding: var(--space-2) var(--space-4);
+  border: var(--size-1) solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface);
   color: var(--color-ink);
+  font-size: var(--font-ui);
   line-height: 1.9;
+  text-align: left;
 }
-.journey-note strong {
+.concept-entry strong {
   display: block;
   color: var(--color-ink);
   font-size: var(--font-ui);
   font-weight: 600;
 }
-.journey-note strong span {
+.concept-entry strong span {
   margin-left: var(--size-22);
 }
 .journey-icon {
@@ -189,6 +195,73 @@ button svg {
   border-radius: 50%;
   border: var(--size-1) solid var(--color-border);
   color: var(--color-ink);
+}
+.concept-map {
+  position: relative;
+  flex: 1;
+  min-width: var(--size-300);
+  height: var(--concept-map-height);
+  overflow: hidden;
+  background: var(--color-surface);
+  border: var(--size-1) solid var(--color-border);
+  border-radius: var(--radius-scene);
+  box-shadow: 0 var(--space-1) var(--size-15) var(--color-shadow-soft);
+}
+.concept-node {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-control);
+  border: var(--size-1) solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-size: var(--font-ui);
+  font-weight: 600;
+  line-height: var(--line-height-label);
+  text-align: center;
+  cursor: pointer;
+}
+.concept-node-label {
+  overflow-wrap: anywhere;
+}
+.concept-root {
+  font-family: var(--font-family-display);
+  font-size: var(--font-body);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: var(--color-primary);
+}
+.concept-region {
+  background: var(--color-soft);
+  border-color: var(--color-primary);
+}
+.concept-mission {
+  font-weight: 500;
+  background: var(--color-surface);
+}
+.concept-mission.current {
+  border: var(--size-2) solid var(--color-current);
+  background: var(--color-warm);
+}
+.concept-mission.completed {
+  background: var(--color-completed);
+  border-color: var(--color-completed);
+  color: var(--color-on-primary);
+}
+.concept-mission.locked {
+  cursor: default;
+  background: var(--color-canvas);
+  color: var(--color-muted);
+  border-style: dashed;
+}
+.concept-link {
+  stroke: var(--color-border);
+  stroke-width: var(--size-2);
+  fill: none;
 }
 .world-map {
   position: relative;
@@ -1422,7 +1495,7 @@ button svg {
     line-height: 1.7;
     max-width: var(--size-300);
   }
-  .journey-note {
+  .concept-map {
     display: none;
   }
   .world-map {
@@ -1998,9 +2071,6 @@ button svg {
     padding-top: var(--space-1);
   }
   .gentle-message {
-    font-size: var(--font-ui);
-  }
-  .journey-note {
     font-size: var(--font-ui);
   }
   .region-label small {
@@ -2717,6 +2787,77 @@ button svg {
 .mission-picker::backdrop {
   background: var(--color-backdrop);
 }
+.concept-dialog {
+  width: calc(100% - var(--space-8));
+  max-width: var(--concept-dialog-max-width);
+  height: min(85dvh, var(--size-690));
+  padding: var(--space-5);
+  border: var(--size-3) solid var(--color-border);
+  border-radius: var(--radius-scene);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-shadow: 0 var(--space-3) var(--space-8) var(--color-shadow);
+}
+.concept-dialog::backdrop {
+  background: var(--color-backdrop);
+}
+.concept-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.concept-dialog-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(var(--size-260, 260px), var(--size-300));
+  gap: var(--space-4);
+}
+.concept-dialog .concept-map {
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+}
+.concept-detail {
+  overflow: auto;
+  padding: var(--space-4);
+  background: var(--color-soft);
+  border-radius: var(--radius-control);
+  font-size: var(--font-ui);
+  line-height: var(--line-height-body);
+}
+.concept-detail h3 {
+  font-family: var(--font-family-display);
+  font-size: var(--font-heading-small);
+  margin: var(--space-1) 0;
+}
+.concept-detail p {
+  margin-block: var(--space-2);
+}
+.concept-detail a {
+  color: var(--color-primary);
+}
+.concept-detail .primary {
+  margin-top: var(--space-3);
+}
+.concept-detail-state {
+  font-weight: 600;
+  color: var(--color-muted);
+}
+.concept-detail-empty,
+.concept-detail-hint {
+  color: var(--color-muted);
+}
+.concept-node.selected {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 var(--size-3) var(--color-hint);
+}
+@media (max-width: 767px) {
+  .concept-dialog,
+  .concept-dialog[open] {
+    display: none;
+  }
+}
 .picker-heading {
   display: flex;
   align-items: center;
@@ -3208,4 +3349,20 @@ button svg {
 .rotation-pieces .turn-art {
   width: var(--puzzle-art-size);
   height: var(--puzzle-art-size);
+}
+
+/* Shared parent guidance cards in Parent Help and the concept map. */
+.parent-learning .parent-guide-card,
+.concept-detail .parent-guide-card {
+  margin-block: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: var(--size-1) solid var(--color-border);
+  border-radius: var(--radius-control);
+  line-height: var(--line-height-body);
+}
+.parent-guide-card > strong:first-child {
+  display: block;
+  color: var(--color-ink);
+  margin-bottom: var(--space-2);
 }

@@ -7,6 +7,7 @@ import { Garden } from "../world/regions/Garden";
 import { useProgress, record, nodeState } from "../world/progression/store";
 import { Lumi, Sprout } from "./Art";
 import { MissionPicker } from "./MissionPicker";
+import { ConceptMapDialog } from "./ConceptTree";
 import { ParentMode } from "./ParentMode";
 import { speak } from "./Audio";
 import { regionInfo, isRegion, type RegionId } from "../content/regions";
@@ -23,6 +24,7 @@ export function Game() {
   );
   const scene = found >= 0 ? found : null;
   const parent = search.orangtua === true;
+  const concept = search.konsep === true;
   const cluster =
     scene === null && isRegion(search.wilayah) ? search.wilayah : null;
   function openRegion(wilayah: RegionId) {
@@ -30,6 +32,13 @@ export function Game() {
   }
   function closeGarden() {
     void navigate({ to: "/", search: {}, replace: true });
+  }
+  function setConcept(open: boolean) {
+    void navigate({
+      to: "/",
+      search: { konsep: open ? true : undefined },
+      replace: true,
+    });
   }
   function setParent(open: boolean) {
     if (scene === null)
@@ -166,17 +175,21 @@ export function Game() {
                   </h1>
                   <p>Pilih wilayah yang ingin kamu jelajahi.</p>
                 </div>
-                <div className="journey-note">
+                <button
+                  className="concept-entry"
+                  onClick={() => setConcept(true)}
+                  aria-label="Buka peta konsep pembelajaran"
+                >
                   <span className="journey-icon">
                     <Map size={23} />
                   </span>
                   <span>
-                    Mulai bermain di sini
+                    Untuk orang tua
                     <strong>
-                      Taman Angka <span>↗</span>
+                      Peta konsep <span>↗</span>
                     </strong>
                   </span>
-                </div>
+                </button>
               </div>
               <WorldMap progress={progress} onOpenRegion={openRegion} />
               <div className="world-footer">
@@ -209,7 +222,14 @@ export function Game() {
             />
           )}
         </main>
-        {cluster && !parent && (
+        {concept && !parent && scene === null && (
+          <ConceptMapDialog
+            progress={progress}
+            onEnter={enter}
+            onClose={() => setConcept(false)}
+          />
+        )}
+        {cluster && !parent && !concept && (
           <MissionPicker
             region={cluster}
             progress={progress}

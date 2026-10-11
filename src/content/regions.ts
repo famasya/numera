@@ -33,10 +33,12 @@ export function regionInfo(id: RegionId) {
 export function gameSearch(search: Record<string, unknown>): {
   orangtua?: boolean;
   wilayah?: RegionId;
+  konsep?: boolean;
 } {
   return {
     wilayah: isRegion(search.wilayah) ? search.wilayah : undefined,
     orangtua:
       search.orangtua === true || search.orangtua === "1" ? true : undefined,
+    konsep: search.konsep === true || search.konsep === "1" ? true : undefined,
   };
 }
