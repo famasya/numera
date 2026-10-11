@@ -1,3 +1,5 @@
+Status 11 Oktober 2026: artwork terhubung ke runtime, selector peta, empat cluster, dan 12 misi awal. [Brief implementasi](../prds/25-map-2-first-adventures.md). Label serta panel Lumi memakai ruang terpisah.
+
 # Desain peta kedua: Pulau Para Pembuat
 
 Dibuat 10 Oktober 2026 memakai built-in imagegen. Nama pulau adalah usulan; pengguna meminta desain peta kedua dengan mempertahankan pulau sekarang. Ini aset/desain visual, belum integrasi navigasi atau gameplay.

@@ -1,6 +1,13 @@
 /* Numera design foundations. Component styles consume these shared tokens.
    CSS media query breakpoints are literal because native CSS variables cannot be used there. */
 :root {
+  --spatial-view-width: 270px;
+  --spatial-view-height: 220px;
+  --spatial-view-compact-height: 170px;
+  --map2-unit: 52px;
+  --map2-face-size: 230px;
+  --map2-card-width: 180px;
+  --map2-track-thickness: 14px;
   --puzzle-cell: 76px;
   --puzzle-art-size: 68px;
   --puzzle-palette-height: 86px;
@@ -233,4 +240,8 @@
   --motion-celebrate-repeats: 2;
   --motion-sway-angle: 3deg;
   --motion-wiggle-angle: 3deg;
+}
+
+:root {
+  --color-water-deep: #237b86;
 }

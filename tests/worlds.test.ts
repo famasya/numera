@@ -28,12 +28,12 @@ const event = (mission: Evidence["mission"]): Evidence => ({
   completed: true,
   variant: "concrete",
 });
-describe("four independent adventures", () => {
-  it("has twelve unique missions in each region and a route per cluster", () => {
-    expect(missions).toHaveLength(48);
-    expect(new Set(missions.map((m) => m.id)).size).toBe(48);
+describe("two islands with independent adventures", () => {
+  it("preserves 48 old missions and adds three per new region", () => {
+    expect(missions).toHaveLength(60);
+    expect(new Set(missions.map((m) => m.id)).size).toBe(60);
     for (const r of regions) {
-      expect(regionMissions(r.id)).toHaveLength(12);
+      expect(regionMissions(r.id)).toHaveLength(r.map === "penemuan" ? 12 : 3);
       expect(gameSearch({ wilayah: r.id }).wilayah).toBe(r.id);
     }
   });
@@ -45,7 +45,7 @@ describe("four independent adventures", () => {
       expect(record(p, event(local[1].id))).toEqual(p);
       for (const m of local) p = record(p, event(m.id));
     }
-    expect(p.completed).toHaveLength(37);
+    expect(p.completed).toHaveLength(49);
     expect(parseProgress(JSON.stringify(p))).toEqual(p);
     expect(nodeState(p, 1)).toBe("current");
   });

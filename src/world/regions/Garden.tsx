@@ -1,3 +1,6 @@
+import { isMapTwoMission } from "../../content/map-two-missions";
+import { MapTwoBoard } from "../../activities/map-two/MapTwoBoard";
+import { MapTwoArt } from "../../components/MapTwoArt";
 import {
   MissionSession,
   useSessionValue,
@@ -5,7 +8,7 @@ import {
   isBoolean,
   isCount,
 } from "../progression/session";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -29,7 +32,12 @@ import { CreativePattern } from "../../activities/adventure/CreativePattern";
 import { Patterns } from "../../activities/patterns/Patterns";
 import { readyForRichPattern } from "../../pedagogy/mastery/readiness";
 import { scaffoldLevel } from "../../pedagogy/scaffolding/hints";
-import { chime, speak } from "../../components/Audio";
+import {
+  chime,
+  speak,
+  cancelSpeech,
+  type SpeechStatus,
+} from "../../components/Audio";
 import type { Progress, Evidence } from "../progression/store";
 type Props = {
   index: number;
@@ -51,6 +59,7 @@ export function Garden(props: Props) {
 function GardenSession({ index, progress, onRecord, onExit, onNext }: Props) {
   const session = useMissionSession();
   const mission = missions[index];
+  const [speechStatus, setSpeechStatus] = useState<SpeechStatus | null>(null);
   const region = regionInfo(mission.region);
   const localMissions = regionMissions(mission.region);
   const localIndex = localMissions.findIndex((m) => m.id === mission.id);
@@ -121,7 +130,9 @@ function GardenSession({ index, progress, onRecord, onExit, onNext }: Props) {
         ? (runs + round) % 2
           ? "scattered"
           : "arc"
-        : `${mission.id}:${rich ? "rich" : "concrete"}`;
+        : isMapTwoMission(mission.id)
+          ? `${mission.id}:${(runs + round) % 2}`
+          : `${mission.id}:${rich ? "rich" : "concrete"}`;
   function evidence(completed: boolean, solutions: string[]): Evidence {
     return {
       mission: mission.id,
@@ -138,13 +149,9 @@ function GardenSession({ index, progress, onRecord, onExit, onNext }: Props) {
     saveStats();
     onRecord(evidence(true, solutions));
     setDone(true);
+    cancelSpeech();
+    setSpeechStatus(null);
     chime(progress.audio);
-    speak(
-      last
-        ? `${region.restored} Terima kasih sudah membantu!`
-        : "Misi selesai. Kamu bisa melanjutkan.",
-      progress.audio,
-    );
   }
   function leave() {
     saveStats();
@@ -165,7 +172,7 @@ function GardenSession({ index, progress, onRecord, onExit, onNext }: Props) {
   }
   useEffect(() => {
     return () => {
-      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+      cancelSpeech();
     };
   }, []);
   const attempt = () => {
@@ -187,6 +194,11 @@ function GardenSession({ index, progress, onRecord, onExit, onNext }: Props) {
       {mission.region === "taman-angka" ? (
         <GardenArt
           bloom={(done ? Math.max(localIndex + 1, completed) : completed) / 4}
+        />
+      ) : region.map === "pembuat" ? (
+        <MapTwoArt
+          region={region.id}
+          completed={done ? Math.max(localIndex + 1, completed) : completed}
         />
       ) : (
         <RegionArt
@@ -232,15 +244,50 @@ function GardenSession({ index, progress, onRecord, onExit, onNext }: Props) {
       </div>
       <div className="instruction">
         <p>{done ? "Misi selesai!" : mission.instruction}</p>
-        <button
-          aria-label="Dengarkan petunjuk"
-          onClick={() => speak(mission.instruction, progress.audio)}
-        >
-          <Volume2 size={21} />
-        </button>
+        {!done && (
+          <button
+            aria-label="Dengarkan petunjuk"
+            onClick={() =>
+              speak(mission.instruction, progress.audio, setSpeechStatus)
+            }
+          >
+            <Volume2 size={21} />
+          </button>
+        )}
       </div>
+      {speechStatus && speechStatus !== "ended" && (
+        <p className="speech-status" role="status">
+          {
+            (
+              {
+                loading: "Menyiapkan suara…",
+                playing: "Petunjuk sedang diputar.",
+                muted: "Suara dimatikan. Aktifkan suara di bagian atas.",
+                unavailable: "Browser ini belum mendukung petunjuk suara.",
+                "missing-voice":
+                  "Suara bahasa Indonesia belum tersedia di perangkat ini.",
+                failed: "Suara tidak dapat diputar. Coba sekali lagi.",
+              } as Partial<Record<SpeechStatus, string>>
+            )[speechStatus]
+          }
+        </p>
+      )}
       <div className="garden-play" key={round}>
-        {mission.id in puzzles ? (
+        {isMapTwoMission(mission.id) ? (
+          <MapTwoBoard
+            id={mission.id}
+            variation={runs + round}
+            hint={level}
+            done={done}
+            onAttempt={attempt}
+            onComplete={finish}
+            onMiss={() => {
+              setMisses((n) => n + 1);
+              stats.current.hints++;
+              saveStats();
+            }}
+          />
+        ) : mission.id in puzzles ? (
           <PuzzleBoard
             puzzle={puzzleFor(mission.id as NewMissionId, rich)}
             hint={level}
@@ -351,7 +398,7 @@ function GardenSession({ index, progress, onRecord, onExit, onNext }: Props) {
           </div>
           <div>
             <span className="eyebrow">
-              {last ? "DUA BELAS MISI SELESAI" : "MISI SELESAI"}
+              {last ? "SEMUA MISI WILAYAH SELESAI" : "MISI SELESAI"}
             </span>
             <h2>{last ? region.restored : "Terima kasih sudah membantu!"}</h2>
             {last && <p>Kamu boleh menjelajahi wilayah lain di peta.</p>}

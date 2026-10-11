@@ -1,6 +1,6 @@
 # PRD Numera: LT + NRICH
 
-Keputusan pengguna, 10 Oktober 2026: guideline gabungan Learning Trajectories dan NRICH, batas produk usia **3–7 tahun**, requirements menyeluruh sebelum menetapkan peta tambahan. **48 adalah jumlah misi sekarang, bukan jumlah level kurikulum atau batas konten.**
+Keputusan pengguna, 10 Oktober 2026: guideline gabungan Learning Trajectories dan NRICH, batas produk usia **3–7 tahun**, requirements menyeluruh sebelum menetapkan peta tambahan. **60 misi sekarang: 48 di peta 1 dan 12 di peta 2. Jumlah misi bukan jumlah level kurikulum atau batas konten.**
 
 ## Cakupan dan status
 
@@ -13,7 +13,7 @@ PDF [LT resmi daring](https://www.learningtrajectories.org/documents/16917850258
 | batas | 16 | Rentang dimulai dalam 3–7 dan berakhir setelah 7; ekstensi opsional, perlu review kedalaman. |
 | lanjutan | 31 | Level dimulai setelah 7; dicatat agar inventaris lengkap, di luar delivery sekarang. |
 
-Aturan scope ini adalah keputusan produk berbasis rentang yang tertulis, bukan usia diagnosis atau prasyarat unlock. Semua 223 level tercatat; tidak mengajarkan semua level kepada semua anak. Sebagian fondasi diperkuat melalui [paket peta 1](24-map-1-reinforcement.md); seluruh roadmap belum selesai. Audit kode menemukan **35 level dengan dukungan parsial/konteks dari 48 misi**; tidak ada klaim coverage penuh, mastery, atau uji anak baru. [Audit misi](22-existing-missions.md) menjelaskan setiap batas.
+Aturan scope ini adalah keputusan produk berbasis rentang yang tertulis, bukan usia diagnosis atau prasyarat unlock. Semua 223 level tercatat; tidak mengajarkan semua level kepada semua anak. Sebagian fondasi diperkuat melalui [paket peta 1](24-map-1-reinforcement.md); seluruh roadmap belum selesai. Audit kode menemukan **49 level dengan dukungan parsial/konteks dari 60 misi**; tidak ada klaim coverage penuh, mastery, atau uji anak baru. [Audit misi](22-existing-missions.md) menjelaskan setiap batas.
 
 ## Cara membaca
 
@@ -22,6 +22,8 @@ Aturan scope ini adalah keputusan produk berbasis rentang yang tertulis, bukan u
 3. [Problem solving NRICH](21-problem-solving.md): enam goal lintas kegiatan dan sebelas sumber primer.
 4. [Audit 48 misi](22-existing-missions.md): perilaku kode, dukungan goal, dan gap.
 5. [Peta dan delivery](23-maps-and-delivery.md): paket pengalaman, requirements peta, dan exit criteria.
+
+7. [Petualangan awal peta 2](25-map-2-first-adventures.md): 12 misi awal, interaksi, dan batas dukungan goal.
 
 6. [Penguatan peta 1](24-map-1-reinforcement.md): brief, acceptance, kompatibilitas, dan bukti implementasi.
 
@@ -50,7 +52,7 @@ Aturan scope ini adalah keputusan produk berbasis rentang yang tertulis, bukan u
 | ANG — Angle and Turn | Menghubungkan putaran dan belokan dengan sudut yang tetap meskipun panjang sisi berubah. | 3 / 2 / 0 / 1 | [19-angle-turn.md](19-angle-turn.md) | Peta 1 + peta 2 |
 | DAT — Classification and Data Analysis | Membentuk kategori, mengubah aturan, merekam kasus, dan memakai data untuk keputusan. | 6 / 2 / 1 / 2 | [20-classification-data.md](20-classification-data.md) | Peta 1 + peta 2 |
 
-Peta 1 adalah pulau empat wilayah/48 misi saat ini. Peta 2 adalah desain Pulau Para Pembuat; penempatan kegiatan di sana merupakan rencana. Setiap PRD menjelaskan wilayahnya pada bagian Penempatan peta. Requirements bersama, NRICH, dan delivery berlaku lintas peta.
+Peta 1 adalah pulau empat wilayah/48 misi saat ini. Peta 2 adalah Pulau Para Pembuat dengan empat wilayah dan 12 misi awal playable; roadmap berikutnya tetap rencana. Setiap PRD menjelaskan wilayahnya pada bagian Penempatan peta. Requirements bersama, NRICH, dan delivery berlaku lintas peta.
 
 ## Keterlacakan
 

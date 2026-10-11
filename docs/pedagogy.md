@@ -17,7 +17,7 @@ PDF PAUD yang disediakan pengguna tersedia di `references/`; isinya belum ditela
 
 [PRD kurikulum](../prds/README.md) mencatat seluruh 223 level LT: 133 goal utama dengan rentang sumber di dalam 3–7, 43 fondasi yang dimulai sebelum 3, 16 ekstensi batas yang berakhir setelah 7, dan 31 level lanjut di luar cakupan sekarang. Scope adalah keputusan perencanaan, bukan tuntutan semua kemampuan pada setiap anak.
 
-Trajectory → level/goal → kegiatan dan variasi. Peta/wilayah adalah cerita yang menampung beberapa trajectory. Satu goal membutuhkan beberapa pengalaman; satu misi dapat mendukung beberapa goal. Jumlah peta/misi tambahan mengikuti kebutuhan kegiatan. Empat wilayah dengan 48 misi tetap basis implementasi sekarang.
+Trajectory → level/goal → kegiatan dan variasi. Peta/wilayah adalah cerita yang menampung beberapa trajectory. Satu goal membutuhkan beberapa pengalaman; satu misi dapat mendukung beberapa goal. Jumlah peta/misi tambahan mengikuti kebutuhan kegiatan. Peta 1 mempunyai 48 misi; peta 2 menambahkan 12 misi awal dalam empat wilayah.
 
 LT tidak menyediakan trajectory tersendiri untuk puzzle logika Numera. Menara Misteri tetap menjadi ruang problem solving lintas konsep; maze, relasi sebelum, dan Latin grid tidak diberi level LT rekaan.
 
@@ -62,6 +62,6 @@ Setiap misi memiliki gagasan matematika, prompt praktis, hal yang diamati, dan r
 
 ## Validasi dan langkah berikutnya
 
-Requirements lengkap tersedia di [prds/](../prds/README.md); status dan rencana delivery ada di [maps-and-delivery](../prds/23-maps-and-delivery.md). [Penguatan peta 1](../prds/24-map-1-reinforcement.md) sudah mengubah produksi dari surplus, transfer pola, variasi segitiga, pantulan geometri, dan reklasifikasi. Langkah berikutnya adalah evidence/kesiapan per goal dan brief kegiatan peta 2; readiness dan skema progres tetap memakai model lama.
+Requirements lengkap tersedia di [prds/](../prds/README.md); status dan rencana delivery ada di [maps-and-delivery](../prds/23-maps-and-delivery.md). [Penguatan peta 1](../prds/24-map-1-reinforcement.md) sudah mengubah produksi dari surplus, transfer pola, variasi segitiga, pantulan geometri, dan reklasifikasi. [Petualangan pertama peta 2](../prds/25-map-2-first-adventures.md) menambahkan pengukuran, data, ruang, pecahan, perubahan jumlah, dan peta bergambar. Langkah berikutnya adalah evidence/kesiapan per goal dan perluasan variasi; readiness dan skema progres tetap memakai model lama.
 
 Validasi teknis, alur Chrome, sentuh tablet fisik, dan pengamatan bermain anak dicatat sebagai bukti yang berbeda. Efektivitas pada rentang usia 3–7, kenyamanan perangkat fisik, dan kesesuaian speech voice Indonesia tetap perlu pengamatan nyata.

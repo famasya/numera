@@ -1,3 +1,55 @@
+# Penyelesaian misi tanpa ucapan — 11 Oktober 2026
+
+- Semua misi memakai handler selesai bersama tanpa narasi otomatis. Petunjuk yang masih diputar dihentikan dan status suara dibersihkan. Tombol petunjuk disembunyikan setelah selesai; bunyi pendek nonverbal tetap mengikuti pengaturan suara.
+- Validasi: 126 tes, typecheck, dan build lulus. Alur Chrome tidak diulang untuk perubahan ini.
+
+---
+
+# Petunjuk suara bundel — 11 Oktober 2026
+
+- Masalah direproduksi di Chrome: mode suara aktif, tetapi sintesis browser tidak memberi event mulai/gagal sehingga “Menyiapkan suara…” bertahan. Kode lama juga diam ketika suara Indonesia belum tersedia. Tidak mengklaim penyebab internal layanan suara Chrome sudah diketahui.
+- Jalur utama sekarang file AAC/M4A lokal: 129 klip asli dari teks instruksi/bantuan seluruh 60 misi dan pesan selesai. Dibuat dengan suara sintetis Indonesia Damayanti, total sekitar 3.8 MB. Manifest menghubungkan teks yang sama dengan URL. [Generator](../scripts/generate-narration.mjs), perintah `pnpm generate:narration` pada macOS; tes mendeteksi konten yang belum mempunyai klip. Tidak mengirim teks/identitas anak ke layanan luar.
+- Pemutaran mempunyai timeout mulai 4 detik, pesan loading/playing/mute/error, penanganan penolakan autoplay, dan pembatalan suara sebelumnya/ketika keluar misi. Sintesis browser hanya fallback teks baru, menunggu voiceschanged dan mempunyai timeout. Tombol misi selesai membaca teks selesai yang tampil.
+- Validasi: 126 tes dalam tujuh file, typecheck, dan build lulus. Chrome pada localhost:3000 memeriksa klik petunjuk Tanam lima bunga: event playing diterima dan status hilang setelah ended. Format AAC mono berdurasi positif diperiksa; semua 60 instruksi/bantuan mempunyai file. Pengujian tidak membuktikan suara terdengar dari speaker pengguna atau kenyamanan suara pada tablet fisik.
+
+---
+
+# Event klik setiap sisi kubus — 11 Oktober 2026
+
+- Handler pasangan pointer-down/up diganti `onClick` React Three Fiber pada enam bidang hitbox 3D ber-ID tetap. Raycaster memakai clientX/clientY relatif bounds canvas; garis dan titik penanda tidak ikut hit testing. Mode penandaan tidak diblokir flag drag lama. Tampilan, tombol animasi, serta validator enam ID dipertahankan.
+- Chrome pada dev server pengguna: replay melalui pilihan misi, klik langsung kiri/kanan/bawah, dua sisi baru setelah putaran samping, lalu atas setelah tombol atas/bawah. Seluruh enam sisi berubah warna dan bertitik; klik ulang menampilkan “Sisi sudah ditandai.” dan tidak melepas tanda. Pemeriksaan akhir menyelesaikan misi. Tidak memakai penandaan keyboard untuk alur ini.
+- 120 tes, typecheck, build, dan whitespace lulus. Replay memakai UI dan mempertahankan completion lama. Sentuhan tablet fisik belum diuji. [PRD](../prds/25-map-2-first-adventures.md) diperbarui.
+
+---
+
+# Kubus: pisahkan penandaan dan putaran — 11 Oktober 2026
+
+- Instruksi pengguna terbaru: misi semua sisi kubus memakai sentuhan sisi hanya untuk memasang tanda. Sentuhan ulang tidak melepas tanda. Putaran dilakukan melalui tombol samping/atas-bawah dengan animasi Motion dan token gerak bersama; reduced motion langsung mengganti pandangan. Area kubus tidak menerima drag/pinch/roda zoom pada misi ini. Eksplorasi ruang lainnya tetap memakai kontrol sebelumnya. Keyboard memakai tombol putar dan Enter/Space untuk tanda sisi depan.
+- Sudut tujuan serta ID sisi tersimpan; animasi hanya mengubah rendering, bukan validator enam sisi. [PRD](../prds/25-map-2-first-adventures.md) diperbarui. Perubahan bahasa “sisi” serta header yang sedang ditambahkan pengguna dipertahankan.
+- Validasi: 120 tes, typecheck, dan build lulus. Chrome pada server pengguna memeriksa kedua tombol dan screenshot sudut antara/akhir putaran. Reduced motion OS dan tablet fisik belum diuji pada revisi ini. Tidak menghapus progres untuk pengujian.
+
+---
+
+# Peta 2 playable dan penyederhanaan interaksi — 11 Oktober 2026
+
+- Pulau Para Pembuat kini mempunyai selector URL `?peta=pembuat`, empat cluster, dan 12 misi awal (3 per wilayah). Peta 1 tetap 48 misi; total 60. [Brief dan acceptance](../prds/25-map-2-first-adventures.md). Registry 223 goal kini mencatat 49 dukungan parsial; tidak ada klaim coverage penuh atau mastery. Parent Help/peta konsep memperoleh tujuan konseptual, manfaat, kegiatan, prompt, observasi, kegiatan rumah, dan sumber untuk seluruh misi baru.
+- Model panjang, pengulangan satuan, pemindahan air, data per kasus, frekuensi termasuk seri/kategori kosong, klasifikasi dua atribut, bangun ruang, enam permukaan, penyangga struktur, separuh luas, perubahan jumlah, serta peta bergambar memakai validator deterministik. Snapshot, replay, deep link, dan progres lama dipertahankan.
+- React Three Fiber/Three merender benda dan gerbang 3D secara lazy dengan SVG fallback. Tidak ada putaran otomatis atau fisika yang menentukan jawaban. Drag memutar, pinch/roda/+/− zoom terbatas, panah keyboard memutar, Home mengembalikan pandangan. Orientasi dan zoom tersimpan. Kubus diperbesar dan disentuh langsung; pilihan gambar permukaan bawah dihapus. Sentuhan singkat memasang/melepas tanda, drag tidak menandai. Enter/Space menandai permukaan depan untuk keyboard.
+- Lembah Ukuran: keping persediaan menyerupai keping jalur dan mendukung drag/pilih–sentuh; alat ukur terlihat sejak awal dan ujung pengukuran berikutnya diberi batas; wadah dinamai dan air dibuat lebih kontras. Rak dua aturan menampilkan tiap benda sekali, mempunyai drag preview dan tujuan tap/keyboard yang tidak tertutup benda. Panel Lumi dipindahkan di luar artwork agar tidak menutupi label wilayah. Garis kubus, air, fokus, serta batas kontrol memakai token bersama.
+- Validasi: **120 tes dalam enam file**, typecheck, dan build produksi lulus. Chrome memakai dev server pengguna `localhost:3000`: 12 alur awal selesai melalui UI; tambahan replay rak menguji jawaban salah, koreksi, keyboard dan drag nyata. Kubus diuji melalui sentuhan langsung, putaran drag, keyboard putar/zoom/penandaan, serta refresh tanda/pandangan. Pengukuran awal diuji dengan overlap, pengulangan alat, pemindahan dan pengembalian air, serta refresh. Tidak semua variasi gameplay atau semua viewport diuji setelah revisi terakhir.
+- Chrome 1024×768 memeriksa perubahan kubus/rak; empat label wilayah tidak beririsan dengan panel Lumi berdasarkan DOM. Pengujian Chrome desktop bukan bukti sentuhan/pinch tablet fisik, reduced-motion seluruh aktivitas, atau uji anak. Build masih memberi warning dependency/chunk; scene 3D dimuat terpisah. Readiness/evidence masih model lama, roadmap 133 goal utama belum selesai. Skenario [QA visual](qa-tests.md) pengguna dipertahankan dan belum seluruhnya dijalankan.
+
+---
+
+# Skenario QA kerusakan visual — 11 Oktober 2026
+
+- [tests/qa-tests/visual-breakage.md](../tests/qa-tests/visual-breakage.md) berisi 40+ skenario uji yang berpeluang merusak tampilan: boundary viewport 767/768, soft-lock oleh `overflow:hidden` pada tinggi pendek, drop target tertumpuk (`elementFromPoint`), `map-bloom` peta 2 di koordinat peta 1, `pan-note` yang tidak pernah tampil, affordance hint yang hilang pada reduced motion, dan overlay/dialog pada layar kecil.
+- Checklist pemeriksaan per skenario mencatat status, tanggal, hasil, dan bukti; kolom "Sumber terdampak" memetakan skenario ke file — perubahan pada file itu membatalkan hasil dan mewajibkan re-check.
+- Prioritas P0: V-02/S-11/V-03 (kontrol selesai terpotong), S-08/S-10/S-17 (drop salah target), M-02/M-05b (bug yang sudah terlihat di kode), E-01 (reduced motion), V-01 (zoom browser).
+- Perubahan dokumentasi saja; tidak ada perubahan kode atau tes yang dijalankan.
+
+---
+
 # Klarifikasi tujuan belajar untuk orang tua — 11 Oktober 2026
 
 - Seluruh 48 tujuan belajar ditulis ulang sebagai kemampuan konseptual yang ingin dikembangkan pada anak. Kata-kata tugas seperti mengambil kunci, menyusun roket, atau menempatkan bunga diganti dengan hubungan jumlah, struktur pola, sifat bentuk, posisi, urutan, serta strategi yang relevan.

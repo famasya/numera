@@ -1,3 +1,4 @@
+import { mapTwoMissions } from "./map-two-missions";
 import type { MissionId } from "./missions";
 import type { RegionId } from "./regions";
 
@@ -5,56 +6,63 @@ import type { RegionId } from "./regions";
 // Tujuan desain dan contoh penggunaan bukan klaim hasil belajar anak.
 const importance = {
   count:
-    "Hitungan berguna untuk mengetahui berapa banyak benda yang tersedia. Misalnya, anak dapat memeriksa jumlah sendok sebelum menyiapkan meja.",
+    "Menghitung berguna untuk mengetahui berapa banyak benda yang tersedia. Misalnya, anak dapat memeriksa jumlah sendok sebelum menyiapkan meja.",
   parts:
-    "Satu jumlah dapat dibentuk dari bagian yang berbeda. Ini memberi cara untuk membagi bekal atau menggabungkan benda tanpa selalu memulai hitungan dari awal.",
+    "Satu jumlah bisa dibentuk dari bagian yang berbeda-beda. Ini membantu anak membagi bekal atau menggabungkan benda tanpa harus menghitung dari awal.",
   pattern:
-    "Aturan berulang memberi dasar untuk memperkirakan apa yang datang berikutnya dan memeriksa urutan. Anak dapat mencoba aturan yang sama dengan manik-manik atau gerakan.",
+    "Aturan yang berulang menjadi dasar untuk memperkirakan bagian yang datang berikutnya dan memeriksa urutannya. Anak dapat mencoba aturan yang sama dengan manik-manik atau gerakan.",
   matching:
-    "Pasangan satu-satu membantu memeriksa kecukupan tanpa harus menyebut angka. Misalnya, setiap orang membutuhkan satu gelas.",
+    "Memasangkan benda satu per satu membantu memeriksa apakah jumlahnya cukup, tanpa harus menghitung. Misalnya, satu gelas untuk setiap orang.",
   compare:
-    "Perbandingan membantu menentukan mana yang kurang, lebih, atau sama. Misalnya, anak dapat memeriksa apakah dua kelompok punya cukup bekal.",
+    "Membandingkan dua kelompok membantu menentukan mana yang lebih banyak, lebih sedikit, atau sama banyak. Misalnya, anak dapat membandingkan bekal dua temannya.",
   production:
-    "Jumlah kebutuhan berbeda dari jumlah persediaan. Anak belajar mengambil secukupnya, misalnya tiga sendok dari laci yang berisi banyak sendok.",
-  sort: "Aturan pengelompokan membantu menata dan menemukan benda. Misalnya, mainan dapat dipisahkan menurut jenis dengan aturan yang sama untuk seluruh koleksi.",
+    "Jumlah yang dibutuhkan bisa berbeda dari jumlah yang tersedia. Anak belajar mengambil secukupnya, misalnya tiga sendok dari laci yang berisi banyak sendok.",
+  sort: "Aturan pengelompokan membantu menata dan menemukan benda. Misalnya, mainan dapat dipisahkan menurut jenisnya dengan aturan yang sama untuk semua mainan.",
   missing:
-    "Memahami bagian yang belum ada membantu menentukan kebutuhan tambahan. Misalnya, dua gelas sudah tersedia dan masih diperlukan gelas untuk tiga teman lain.",
+    "Mengetahui bagian yang belum ada membantu menentukan berapa banyak yang masih dibutuhkan. Misalnya, dua gelas sudah tersedia, tetapi tiga teman masih memerlukan gelas.",
   repair:
-    "Memeriksa aturan memberi alasan untuk memperbaiki susunan. Anak dapat menunjukkan bagian yang perlu diganti sambil mempertahankan bagian yang sudah sesuai.",
+    "Memeriksa aturan membantu menemukan bagian yang perlu diperbaiki. Anak dapat menunjukkan bagian yang perlu diganti sambil mempertahankan bagian yang sudah sesuai.",
   sharing:
-    "Pembagian sama banyak memberi cara memeriksa keadilan. Anak dapat membagi bekal satu per satu, lalu membandingkan bagian setiap teman.",
+    "Dengan berbagi sama banyak, anak bisa memeriksa apakah pembagiannya adil. Anak dapat membagi bekal satu per satu, lalu membandingkan bagian setiap teman.",
   create:
-    "Membuat aturan memberi kesempatan mengambil keputusan dan memeriksa konsistensinya. Pola yang berbeda dapat sama-sama sah jika aturan masing-masing tetap diikuti.",
+    "Membuat aturan sendiri melatih anak mengambil keputusan dan memeriksa konsistensinya. Pola yang berbeda bisa sama-sama benar jika masing-masing mengikuti aturannya.",
   transfer:
-    "Aturan dapat tetap sama saat bendanya berubah. Misalnya, pola dua warna dapat menjadi gerakan tepuk dan sentuh bahu; anak memperhatikan hubungan antarbagian.",
+    "Aturan bisa tetap sama walaupun bendanya berganti. Misalnya, pola dua warna bisa menjadi gerakan tepuk tangan dan sentuh bahu; anak memperhatikan hubungan antarbagiannya.",
   resort:
-    "Satu benda dapat termasuk kelompok berbeda menurut pertanyaan yang dipakai. Misalnya, balok merah dapat dikelompokkan bersama benda merah atau bersama semua balok.",
+    "Satu benda bisa masuk ke kelompok yang berbeda, tergantung aturan yang dipakai. Misalnya, balok merah dapat dikelompokkan dengan benda merah lain atau dengan semua balok.",
   shape:
     "Sifat bentuk membantu mengenali benda meskipun warna atau arahnya berubah. Anak dapat mencari kepingan yang cocok dengan lubang saat merapikan mainan.",
-  size: "Ukuran dan jenis menjawab pertanyaan berbeda. Misalnya, dua kotak sama-sama berbentuk persegi, tetapi hanya kotak yang lebih besar cukup untuk sebuah benda.",
+  size: "Ukuran dan jenis menjawab pertanyaan yang berbeda. Misalnya, dua kotak sama-sama berbentuk persegi, tetapi hanya kotak besar yang muat untuk sebuah benda.",
   assembly:
-    "Bagian dapat disusun menjadi satu keseluruhan dengan posisi yang sesuai. Ini memberi pengalaman untuk menyusun puzzle, membuat gambar, dan membicarakan letak bagian.",
+    "Bagian dapat disusun menjadi satu keseluruhan dengan letak yang tepat. Ini sekaligus melatih anak menyusun puzzle, membuat gambar, dan membicarakan posisi tiap bagian.",
   turn: "Memperkirakan putaran membantu menyesuaikan arah sebelum mencoba. Misalnya, kepingan puzzle perlu diputar agar sisinya cocok dengan ruang kosong.",
   mirror:
-    "Pantulan menghubungkan arah dan jarak terhadap garis cermin. Anak dapat membandingkan bentuk kertas dengan bayangannya pada cermin nyata.",
+    "Pantulan menghubungkan arah dan jarak benda terhadap garis cermin. Anak dapat membandingkan bentuk kertas dengan bayangannya di cermin sungguhan.",
   cover:
-    "Kecocokan tiap bagian memengaruhi ruang yang tersisa. Anak dapat mencoba menutup bidang dengan kepingan dan memeriksa celah; ini memberi konteks awal untuk luas.",
-  plan: "Rencana dapat diperiksa dan diubah memakai informasi baru. Misalnya, anak mencari jalan lain ketika jalur menuju tempat bermain terhalang.",
+    "Kecocokan tiap bagian memengaruhi ruang yang tersisa. Anak dapat mencoba menutup bidang dengan kepingan dan memeriksa celah; ini menjadi pengenalan awal tentang luas.",
+  plan: "Rencana bisa diperiksa dan diubah dengan informasi baru. Misalnya, anak mencari jalan lain ketika jalan menuju tempat bermain terhalang.",
   sequence:
-    "Urutan tindakan dapat menentukan apakah tujuan tercapai. Misalnya, mengambil bahan mendahului membuat bekal; beberapa langkah lain dapat memiliki urutan yang berbeda.",
+    "Urutan tindakan menentukan apakah tujuan tercapai. Misalnya, anak mengambil bahan sebelum membuat bekal; langkah lain boleh memiliki urutan yang berbeda.",
   equality:
-    "Kesetaraan ditentukan oleh jumlah yang dibandingkan. Anak dapat memasangkan benda untuk memeriksa dua bagian yang sama; bobot titik game tetap satuan rekaan.",
+    "Dua bagian setara bila jumlahnya sama banyak. Anak dapat memasangkan benda untuk memeriksa dua bagian yang sama; titik pada bintang di game adalah satuan buatan.",
   constraints:
-    "Sebuah pilihan perlu memenuhi semua syarat yang berlaku. Anak berlatih memeriksa kembali pilihan, misalnya mencari benda yang jenis dan ukurannya sama-sama cocok.",
+    "Satu pilihan perlu memenuhi semua syarat yang berlaku. Anak berlatih memeriksa kembali pilihannya, misalnya mencari benda yang jenisnya dan ukurannya sama-sama cocok.",
 };
 
+const mapTwoPurpose = Object.fromEntries(
+  mapTwoMissions.map((m) => [m.id, m.purpose]),
+) as Record<
+  (typeof mapTwoMissions)[number]["id"],
+  { goal: string; why: string }
+>;
 export const missionPurpose = {
+  ...mapTwoPurpose,
   counting: {
-    goal: "Memahami hubungan satu-satu dan bahwa hasil hitungan menyatakan jumlah seluruh benda.",
+    goal: "Memahami korespondensi satu-satu dan bahwa hasil hitungan menyatakan jumlah semua benda.",
     why: importance.count,
   },
   composition: {
-    goal: "Memahami bahwa satu jumlah dapat diuraikan menjadi beberapa pasangan bagian yang berbeda.",
+    goal: "Memahami bahwa satu jumlah dapat dipecah menjadi dua bagian dengan cara yang berbeda-beda.",
     why: importance.parts,
   },
   patterns: {
@@ -62,7 +70,7 @@ export const missionPurpose = {
     why: importance.pattern,
   },
   matching: {
-    goal: "Memahami bahwa pasangan satu-satu dapat digunakan untuk memeriksa kecukupan.",
+    goal: "Memahami bahwa memasangkan benda satu per satu dapat dipakai untuk memeriksa apakah jumlahnya cukup.",
     why: importance.matching,
   },
   compare: {
@@ -78,31 +86,31 @@ export const missionPurpose = {
     why: importance.sort,
   },
   missing: {
-    goal: "Memahami hubungan antara jumlah yang sudah ada, bagian yang belum ada, dan jumlah keseluruhan.",
+    goal: "Memahami hubungan antara bagian yang sudah ada, bagian yang belum ada, dan jumlah seluruhnya.",
     why: importance.missing,
   },
   growing: {
-    goal: "Memahami urutan jumlah melalui perbandingan kelompok yang berdekatan.",
+    goal: "Memahami urutan jumlah dengan membandingkan kelompok yang berdekatan.",
     why: importance.compare,
   },
   repair: {
-    goal: "Mengenali penyimpangan dari aturan dan menggunakan aturan tersebut untuk menentukan perbaikan.",
+    goal: "Mengenali bagian yang menyimpang dari aturan dan memakai aturan itu untuk menentukan perbaikannya.",
     why: importance.repair,
   },
   sharing: {
-    goal: "Memahami bahwa pembagian sama banyak menghasilkan bagian yang setara untuk setiap penerima.",
+    goal: "Memahami bahwa berbagi adil berarti setiap teman mendapat jumlah yang sama.",
     why: importance.sharing,
   },
   "free-pattern": {
-    goal: "Mengembangkan kemampuan menentukan aturan sendiri dan menjaga konsistensinya.",
+    goal: "Mengembangkan kemampuan membuat aturan sendiri dan menjaga konsistensinya.",
     why: importance.create,
   },
   "forest-copy": {
-    goal: "Mengenali struktur berulang dan menjaga urutan hubungan antarbagian.",
+    goal: "Mengenali susunan yang berulang dan menjaga urutan hubungan antarbagiannya.",
     why: importance.pattern,
   },
   "forest-next": {
-    goal: "Menggunakan keteraturan yang sudah diketahui untuk memperkirakan bagian berikutnya.",
+    goal: "Menggunakan urutan yang sudah diketahui untuk memperkirakan bagian berikutnya.",
     why: importance.pattern,
   },
   "forest-gap": {
@@ -114,19 +122,19 @@ export const missionPurpose = {
     why: importance.pattern,
   },
   "forest-transfer": {
-    goal: "Memahami bahwa aturan yang sama dapat muncul pada benda atau representasi yang berbeda.",
+    goal: "Memahami bahwa aturan yang sama dapat muncul pada benda atau bahan yang berbeda.",
     why: importance.transfer,
   },
   "forest-pairs": {
-    goal: "Memahami bahwa satu bagian berulang dapat memuat unsur yang muncul lebih dari sekali.",
+    goal: "Memahami bahwa satu bagian berulang dapat berisi benda yang muncul lebih dari sekali.",
     why: importance.pattern,
   },
   "forest-double": {
-    goal: "Memahami bahwa posisi unsur yang berulang di dalam satu bagian menentukan aturan pola.",
+    goal: "Memahami bahwa posisi benda yang berulang di dalam satu bagian menentukan aturan pola.",
     why: importance.pattern,
   },
   "forest-three": {
-    goal: "Mengenali batas satu bagian berulang dan urutan unsur di dalamnya.",
+    goal: "Mengenali batas satu bagian berulang dan urutan benda di dalamnya.",
     why: importance.pattern,
   },
   "forest-repair": {
@@ -138,7 +146,7 @@ export const missionPurpose = {
     why: importance.sort,
   },
   "forest-types": {
-    goal: "Memahami bahwa keanggotaan kelompok berubah ketika dasar pengelompokannya berubah.",
+    goal: "Memahami bahwa isi kelompok berubah ketika aturan pengelompokannya berubah.",
     why: importance.resort,
   },
   "forest-create": {
@@ -146,15 +154,15 @@ export const missionPurpose = {
     why: importance.create,
   },
   "shape-shadows": {
-    goal: "Mengenali bentuk berdasarkan ciri tepi dan sisinya.",
+    goal: "Mengenali bentuk berdasarkan tepi dan sisinya.",
     why: importance.shape,
   },
   "shape-sizes": {
-    goal: "Memahami bahwa ukuran dan jenis bentuk merupakan sifat yang berbeda.",
+    goal: "Memahami bahwa ukuran dan jenis bentuk adalah sifat yang berbeda.",
     why: importance.size,
   },
   "shape-turned": {
-    goal: "Memahami bahwa jenis bentuk tetap sama meskipun orientasi atau panjang sisinya berubah.",
+    goal: "Memahami bahwa jenis bentuk tetap sama meskipun arah atau panjang sisinya berubah.",
     why: importance.shape,
   },
   "shape-house": {
@@ -162,7 +170,7 @@ export const missionPurpose = {
     why: importance.assembly,
   },
   "shape-boat": {
-    goal: "Memahami bahwa bentuk dan orientasi bagian menentukan kecocokannya dalam suatu susunan.",
+    goal: "Memahami bahwa bentuk dan arah bagian menentukan kecocokannya dalam satu susunan.",
     why: importance.assembly,
   },
   "shape-rocket": {
@@ -170,19 +178,19 @@ export const missionPurpose = {
     why: importance.assembly,
   },
   "shape-turn": {
-    goal: "Membayangkan perubahan orientasi suatu bentuk akibat seperempat putaran.",
+    goal: "Membayangkan perubahan arah suatu bentuk akibat seperempat putaran.",
     why: importance.turn,
   },
   "shape-sails": {
-    goal: "Memahami bahwa putaran mengubah orientasi tanpa mengubah jenis bentuk.",
+    goal: "Memahami bahwa putaran mengubah arah tanpa mengubah jenis bentuk.",
     why: importance.turn,
   },
   "shape-mirror": {
-    goal: "Memahami bahwa pantulan membalik orientasi dan mempertahankan jarak terhadap garis cermin.",
+    goal: "Memahami bahwa pantulan membalik arah dan mempertahankan jarak terhadap garis cermin.",
     why: importance.mirror,
   },
   "shape-window": {
-    goal: "Mengenali hubungan simetri melalui pasangan bagian pada kedua sisi garis cermin.",
+    goal: "Mengenali simetri melalui pasangan bagian pada kedua sisi garis cermin.",
     why: importance.mirror,
   },
   "shape-floor": {
@@ -190,7 +198,7 @@ export const missionPurpose = {
     why: importance.cover,
   },
   "shape-bridge": {
-    goal: "Mengembangkan penalaran tentang hubungan bentuk bagian dengan ruang yang tersisa.",
+    goal: "Melatih penalaran tentang kecocokan bentuk bagian dengan ruang yang tersisa.",
     why: importance.cover,
   },
   "tower-path": {
@@ -198,7 +206,7 @@ export const missionPurpose = {
     why: importance.plan,
   },
   "tower-detour": {
-    goal: "Menggunakan informasi baru untuk meninjau dan mengubah strategi.",
+    goal: "Memakai informasi baru untuk memeriksa ulang dan mengubah strategi.",
     why: importance.plan,
   },
   "tower-key": {
@@ -206,7 +214,7 @@ export const missionPurpose = {
     why: importance.sequence,
   },
   "tower-even": {
-    goal: "Memahami kesetaraan dua kelompok melalui perbandingan jumlahnya.",
+    goal: "Memahami kesetaraan dua kelompok dengan membandingkan jumlahnya.",
     why: importance.equality,
   },
   "tower-weights": {
@@ -226,7 +234,7 @@ export const missionPurpose = {
     why: importance.constraints,
   },
   "tower-chain": {
-    goal: "Memahami hubungan urutan berantai dan memeriksa konsistensi antarhubungan.",
+    goal: "Memahami urutan berantai dan memeriksa konsistensi antarhubungannya.",
     why: importance.sequence,
   },
   "tower-grid": {
@@ -234,7 +242,7 @@ export const missionPurpose = {
     why: importance.constraints,
   },
   "tower-grid-three": {
-    goal: "Menggunakan informasi yang sudah diketahui untuk mempersempit kemungkinan secara sistematis.",
+    goal: "Menggunakan informasi yang sudah diketahui untuk mempersempit kemungkinan satu per satu.",
     why: importance.constraints,
   },
   "tower-beacon": {
@@ -244,16 +252,32 @@ export const missionPurpose = {
 } satisfies Record<MissionId, { goal: string; why: string }>;
 
 export const regionPurpose = {
+  "lembah-ukuran": {
+    goal: "Memahami ukuran melalui satuan yang sama dan perubahan wadahnya.",
+    why: "Pengukuran membantu anak membandingkan panjang dan isi dengan acuan yang sama.",
+  },
+  "desa-data": {
+    goal: "Mencatat setiap kejadian, mengelompokkannya, dan memakai catatan untuk menentukan kebutuhan.",
+    why: "Dengan catatan, anak dapat memeriksa kebutuhan dan pilihan tanpa harus menghafal semuanya.",
+  },
+  "bengkel-ruang": {
+    goal: "Memahami sifat bangun ruang, sisi yang tersembunyi, dan hubungan penyangga.",
+    why: "Bermain dengan bangun ruang melatih anak merencanakan susunan dan memeriksa semua bagian benda nyata.",
+  },
+  "pelabuhan-petualangan": {
+    goal: "Menghubungkan pembagian, perubahan jumlah, dan posisi untuk memecahkan masalah.",
+    why: "Masalah gabungan melatih anak memilih strategi dan menerapkannya pada kebutuhan baru.",
+  },
   "taman-angka": {
-    goal: "Menggunakan jumlah, bagian, perbandingan, dan pembagian untuk memenuhi kebutuhan.",
-    why: "Anak dapat memeriksa kecukupan bekal, mengambil jumlah yang diminta, dan membagi benda sama banyak.",
+    goal: "Menggunakan jumlah, bagian, perbandingan, dan pembagian untuk menyelesaikan masalah sehari-hari.",
+    why: "Anak dapat memeriksa apakah bekalnya cukup, mengambil jumlah yang diminta, dan membagi benda sama banyak.",
   },
   "hutan-pola": {
-    goal: "Mengenali, membuat, dan memindahkan aturan pola serta pengelompokan.",
-    why: "Aturan memberi cara memperkirakan urutan, menemukan penyimpangan, dan menata benda menurut pertanyaan yang berbeda.",
+    goal: "Mengenali, membuat, dan menerapkan aturan pola serta pengelompokan pada benda lain.",
+    why: "Aturan membantu anak memperkirakan urutan, menemukan bagian yang menyimpang, dan menata benda dengan cara yang berbeda.",
   },
   "pulau-bentuk": {
-    goal: "Mengenali sifat bentuk dan memeriksa hasil susun, putar, serta pantul.",
+    goal: "Mengenali sifat bentuk serta memeriksa hasil menyusun, memutar, dan memantulkannya.",
     why: "Anak dapat mencari kepingan yang cocok, merencanakan susunan, dan membicarakan posisi bagian saat bermain puzzle atau balok.",
   },
   "menara-misteri": {

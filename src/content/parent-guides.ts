@@ -1,3 +1,4 @@
+import { mapTwoMissions } from "./map-two-missions";
 import type { MissionId } from "./missions";
 import { newMissions } from "./new-missions";
 const pdf =
@@ -64,26 +65,26 @@ const gardenGuides = {
     meaning:
       "Anak memasangkan satu bunga dengan satu lubang. Jumlah bunga tetap lima meskipun posisinya berubah.",
     coach:
-      "Ajak anak menunjuk bunga satu per satu. Setelah menghitung, tanyakan jumlah semuanya.",
+      "Ajak anak menunjuk bunga satu per satu. Setelah menghitung, tanyakan berapa semuanya.",
     observe: "Apakah ada bunga yang terlewat atau dihitung dua kali?",
     source: "counting",
   },
   composition: {
     meaning:
-      "Lima bunga dapat dibagi dengan beberapa cara. Jumlah keseluruhannya tetap sama; petak kosong juga boleh.",
+      "Lima bunga dapat dibagi dengan beberapa cara. Jumlah seluruhnya tetap sama; petak kosong juga boleh.",
     coach:
       "Tanyakan apakah ada susunan lain. Biarkan anak memindahkan bunga dan membandingkan hasilnya.",
     observe:
-      "Apakah anak melihat hubungan kedua kelompok dengan jumlah seluruh bunga?",
+      "Apakah anak melihat hubungan antara kedua petak dan jumlah semua bunga?",
     source: "parts",
   },
   patterns: {
     meaning:
       "Pola memiliki bagian yang berulang. Anak mencari warna yang melanjutkan urutan itu.",
     coach:
-      "Bacakan urutan warna bersama. Berhenti sebelum bagian kosong dan beri waktu untuk mencoba.",
+      "Bacakan urutan warna bersama anak. Berhenti sebelum bagian kosong dan beri waktu anak untuk mencoba.",
     observe:
-      "Apakah anak mengenali bagian yang diulang, atau menebak tiap bunga?",
+      "Apakah anak mengenali bagian yang diulang, atau menebak setiap bunga?",
     source: "patterns",
   },
   matching: {
@@ -99,24 +100,24 @@ const gardenGuides = {
     meaning:
       "Anak membandingkan dua kelompok. Memindahkan satu batu mengurangi satu kelompok dan menambah kelompok lain.",
     coach:
-      "Tanyakan kolam mana yang memiliki lebih banyak batu. Anak boleh menghitung atau memasangkan batunya.",
+      "Tanyakan kolam mana yang berisi batu lebih banyak. Anak boleh menghitung atau memasangkan batunya.",
     observe:
       "Apakah anak dapat menjelaskan mengapa jumlah kedua kolam sudah sama?",
     source: "reasoning",
   },
   orders: {
     meaning:
-      "Titik mewakili jumlah pesanan. Tujuh bunga tersedia; anak membuat jumlah tujuan dan menyisakan bunga di keranjang. Pesanan pertama tiga dan dua; saat bermain ulang berganti dengan dua dan satu.",
+      "Titik menunjukkan jumlah pesanan. Tujuh bunga tersedia; anak menanam jumlah yang diminta dan menyisakan sisanya di keranjang. Pesanan pertama tiga dan dua; saat bermain ulang berganti menjadi dua dan satu.",
     coach:
-      "Tanyakan jumlah bunga yang dibutuhkan setiap petak. Biarkan anak menghitung atau memasangkan, lalu tanyakan jumlah semuanya sebelum memeriksa pesanan.",
-    observe: "Apakah anak berhenti pada jumlah tujuan, menyisakan bunga berlebih, dan menyebut jumlah tanpa menghitung ulang? Penyelesaian game belum membuktikan kardinalitas atau subitizing.",
+      "Tanyakan jumlah bunga yang dibutuhkan setiap petak. Biarkan anak menghitung atau memasangkan, lalu tanyakan berapa semuanya sebelum memeriksa pesanan.",
+    observe: "Apakah anak berhenti pada jumlah yang diminta, menyisakan bunga berlebih, dan menyebut jumlah tanpa menghitung ulang? Penyelesaian game belum membuktikan anak paham jumlah akhir atau bisa menyebut jumlah tanpa menghitung.",
     source: "counting",
   },
   sorting: {
     meaning:
       "Benda dikelompokkan berdasarkan jenisnya. Jumlah total tetap sama setelah dipisahkan.",
     coach:
-      "Tanyakan alasan benda masuk ke keranjang tertentu. Coba juga mengelompokkan benda nyata menurut warna.",
+      "Tanyakan mengapa sebuah benda masuk ke keranjang tertentu. Coba juga mengelompokkan benda nyata menurut warna.",
     observe: "Apakah anak memakai aturan yang sama untuk semua benda?",
     source: "patterns",
   },
@@ -124,7 +125,7 @@ const gardenGuides = {
     meaning:
       "Dua bunga sudah ditanam. Anak melengkapi bagian yang belum ada agar jumlahnya menjadi lima.",
     coach:
-      "Biarkan anak menghitung semua bunga atau menghitung lanjut dari dua. Benda konkret tetap tersedia.",
+      "Biarkan anak menghitung semua bunga atau menghitung lanjut dari dua. Bunga tetap terlihat untuk dihitung.",
     observe:
       "Apakah anak memahami bunga lama dan bunga tambahan sebagai satu kelompok?",
     source: "parts",
@@ -134,7 +135,7 @@ const gardenGuides = {
       "Kelompok disusun menurut jumlah batu, bukan warna atau posisi awalnya.",
     coach:
       "Mulai dengan dua kelompok. Tanyakan kelompok mana yang lebih sedikit, lalu bandingkan kelompok berikutnya.",
-    observe: "Apakah anak memeriksa jumlah tiap kelompok saat menyusun urutan?",
+    observe: "Apakah anak memeriksa jumlah setiap kelompok saat menyusun urutan?",
     source: "reasoning",
   },
   repair: {
@@ -149,14 +150,14 @@ const gardenGuides = {
     meaning:
       "Berbagi adil berarti kedua teman mendapat jumlah yang sama. Empat buah dapat dibagi menjadi dua dan dua.",
     coach:
-      "Anak boleh membagi satu per satu. Ajak membandingkan bekal kedua teman setelah selesai.",
+      "Anak boleh membagi satu per satu. Ajak anak membandingkan bekal kedua teman setelah selesai.",
     observe:
       "Apakah anak memeriksa kesetaraan, bukan hanya menghabiskan isi keranjang?",
     source: "sharing",
   },
   "free-pattern": {
     meaning:
-      "Anak membuat unit dua bunga, lalu mengulanginya. Dua bunga dengan warna sama juga merupakan solusi valid.",
+      "Anak membuat unit dua bunga, lalu mengulanginya. Dua bunga dengan warna sama juga boleh.",
     coach:
       "Minta anak menunjukkan bagian yang diulang. Coba membuat pola lain dengan gerakan atau benda nyata.",
     observe:
@@ -166,6 +167,7 @@ const gardenGuides = {
 } satisfies Partial<Record<MissionId, Guide>>;
 export const parentGuides = {
   ...gardenGuides,
+  ...Object.fromEntries(mapTwoMissions.map(m => [m.id, m.parent])),
   ...Object.fromEntries(newMissions.map((m) => [m.id, m.parent])),
 } as Record<MissionId, Guide>;
 for (const m of newMissions) {

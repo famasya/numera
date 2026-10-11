@@ -17,5 +17,5 @@ export function suggestion(p: Progress) {
     return "Coba pola AAB yang tersedia saat bermain ulang. Buat pola tepuk–tepuk–diam bersama.";
   if (p.completed.length === missions.length)
     return "Mainkan lagi dengan susunan baru. Tanyakan: adakah cara lain membagi lima bunga?";
-  return "Temani eksplorasi. Ajak anak menunjuk setiap bunga dan menceritakan apa yang berubah.";
+  return "Temani anak menjelajah bebas. Ajak anak menunjuk setiap bunga dan menceritakan apa yang berubah.";
 }

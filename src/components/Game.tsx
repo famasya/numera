@@ -10,7 +10,14 @@ import { MissionPicker } from "./MissionPicker";
 import { ConceptMapDialog } from "./ConceptTree";
 import { ParentMode } from "./ParentMode";
 import { speak } from "./Audio";
-import { regionInfo, isRegion, type RegionId } from "../content/regions";
+import { narrationClips } from "../content/narration-clips";
+import {
+  regionInfo,
+  isRegion,
+  maps,
+  type MapId,
+  type RegionId,
+} from "../content/regions";
 import { missions } from "../content/missions";
 export function Game() {
   const { progress, setProgress, ready, storageOk } = useProgress();
@@ -27,16 +34,25 @@ export function Game() {
   const concept = search.konsep === true;
   const cluster =
     scene === null && isRegion(search.wilayah) ? search.wilayah : null;
+  const activeMap: MapId =
+    scene !== null
+      ? regionInfo(missions[scene].region).map
+      : cluster
+        ? regionInfo(cluster).map
+        : search.peta === "pembuat"
+          ? "pembuat"
+          : "penemuan";
+  const mapSearch = { peta: activeMap === "pembuat" ? activeMap : undefined };
   function openRegion(wilayah: RegionId) {
-    void navigate({ to: "/", search: { wilayah } });
+    void navigate({ to: "/", search: { ...mapSearch, wilayah } });
   }
   function closeGarden() {
-    void navigate({ to: "/", search: {}, replace: true });
+    void navigate({ to: "/", search: mapSearch, replace: true });
   }
   function setConcept(open: boolean) {
     void navigate({
       to: "/",
-      search: { konsep: open ? true : undefined },
+      search: { ...mapSearch, konsep: open ? true : undefined },
       replace: true,
     });
   }
@@ -44,7 +60,11 @@ export function Game() {
     if (scene === null)
       void navigate({
         to: "/",
-        search: { wilayah: search.wilayah, orangtua: open ? true : undefined },
+        search: {
+          ...mapSearch,
+          wilayah: search.wilayah,
+          orangtua: open ? true : undefined,
+        },
         replace: true,
       });
     else
@@ -54,13 +74,17 @@ export function Game() {
           regionId: missions[scene].region,
           missionId: missions[scene].id,
         },
-        search: { wilayah: search.wilayah, orangtua: open ? true : undefined },
+        search: {
+          ...mapSearch,
+          wilayah: search.wilayah,
+          orangtua: open ? true : undefined,
+        },
         replace: true,
       });
   }
 
   function goMap() {
-    void navigate({ to: "/", search: { orangtua: undefined } });
+    void navigate({ to: "/", search: { ...mapSearch, orangtua: undefined } });
   }
   useEffect(() => {
     if (
@@ -70,12 +94,14 @@ export function Game() {
     ) {
       void navigate({
         to: "/",
-        search: { orangtua: undefined },
+        search: { ...mapSearch, orangtua: undefined },
         replace: true,
       });
     }
   }, [ready, missionId, found, progress.completed, navigate]);
-  const [hasVoice, setHasVoice] = useState(false);
+  const [hasVoice, setHasVoice] = useState(
+    Object.keys(narrationClips).length > 0,
+  );
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [scene]);
@@ -83,9 +109,10 @@ export function Game() {
     if (!("speechSynthesis" in window)) return;
     const update = () =>
       setHasVoice(
-        window.speechSynthesis
-          .getVoices()
-          .some((v) => v.lang.toLowerCase().startsWith("id")),
+        Object.keys(narrationClips).length > 0 ||
+          window.speechSynthesis
+            .getVoices()
+            .some((v) => v.lang.toLowerCase().startsWith("id")),
       );
     update();
     window.speechSynthesis.addEventListener("voiceschanged", update);
@@ -99,7 +126,7 @@ export function Game() {
     void navigate({
       to: "/$regionId/$missionId",
       params: { regionId: missions[i].region, missionId: missions[i].id },
-      search: { orangtua: undefined },
+      search: { ...mapSearch, orangtua: undefined },
     });
     speak(missions[i].instruction, progress.audio);
   }
@@ -119,8 +146,11 @@ export function Game() {
         <header className="site-header">
           <button
             className="wordmark"
-            disabled={scene !== null}
-            aria-label={scene === null ? "Numera, peta dunia" : "Numera"}
+            aria-label={
+              scene === null
+                ? "Numera, peta dunia"
+                : "Numera, kembali ke peta dunia"
+            }
             onClick={goMap}
           >
             <span className="brand-mark">
@@ -191,7 +221,29 @@ export function Game() {
                   </span>
                 </button>
               </div>
-              <WorldMap progress={progress} onOpenRegion={openRegion} />
+              <nav className="map-selector" aria-label="Pilih pulau">
+                {maps.map((m) => (
+                  <button
+                    key={m.id}
+                    className={activeMap === m.id ? "primary" : "secondary"}
+                    aria-pressed={activeMap === m.id}
+                    onClick={() => {
+                      void navigate({
+                        to: "/",
+                        search: { peta: m.id === "pembuat" ? m.id : undefined },
+                      });
+                    }}
+                  >
+                    {m.name}
+                  </button>
+                ))}
+              </nav>
+              <WorldMap
+                key={activeMap}
+                map={activeMap}
+                progress={progress}
+                onOpenRegion={openRegion}
+              />
               <div className="world-footer">
                 <span>
                   <span className="tiny-spark">✧</span> Kamu boleh mencoba lagi.
@@ -207,7 +259,7 @@ export function Game() {
                       <Sprout />
                     </span>
                   ))}
-                  <small>Taman Angka</small>
+                  <small>{maps.find((m) => m.id === activeMap)!.name}</small>
                 </span>
               </div>
             </>

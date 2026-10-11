@@ -43,7 +43,7 @@ export function ParentMode({
       >
         <p className="parent-intro">
           {activeMission
-            ? "Dampingi anak sesuai kegiatan yang sedang dimainkan. Beri waktu untuk mencoba sebelum membantu."
+            ? "Dampingi anak sesuai kegiatan yang sedang dimainkan. Beri anak waktu untuk mencoba sebelum membantu."
             : "Pilih materi misi untuk melihat cara mendampingi anak. Panduan Numera mengacu pada sumber yang ditautkan."}
         </p>
         {!storageOk && (

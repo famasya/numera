@@ -28,3 +28,9 @@ Kalimat pendek tetap harus terdengar wajar. Jangan memecah petunjuk menjadi “S
 [ASD-STE100, Issue 9](https://www.asd-ste100.org/assets/files/ASD-STE100_ISSUE9.pdf), bagian 5, mendukung kalimat prosedural pendek, satu instruksi per kalimat, dan bentuk perintah. [Penjelasan resmi ASD-STE100](https://asd-ste100.org/about.html) menjelaskan bahasa terkendali dan konsistensi makna kata. Prinsip tersebut diadaptasi untuk instruksi permainan anak dalam bahasa Indonesia; klaim edukasi tetap dijelaskan dalam pedagogy.md.
 
 Gerbang: gunakan “Buat pola bunga untuk membuka gerbang.” Petunjuk “Isi dua tempat pertama dengan bunga. Ulangi urutan warnanya.” Warna boleh sama; jangan meminta dua warna berbeda karena AA dan BB adalah solusi valid. Hindari “Susun dua bunga. Ulangi susunannya.” yang tidak menjelaskan tujuan.
+
+## Petunjuk suara
+
+Petunjuk, bantuan, dan pesan selesai memakai audio Indonesia yang disertakan di `public/audio/id/`, dengan manifest `src/content/narration-clips.ts`. Klip dibuat dari teks konten yang sama memakai suara sintetis Damayanti; bukan rekaman manusia. Pemutaran klip tidak memerlukan suara sistem browser atau layanan TTS runtime.
+
+Setelah mengubah teks, jalankan `pnpm generate:narration` pada macOS yang menyediakan `say`, suara Damayanti, dan `afconvert`. Tes memeriksa bahwa semua instruksi/bantuan mempunyai file yang sesuai. Audio dapat dimatikan; kegagalan pemutaran mempunyai pesan dan batas waktu. Sintesis browser hanya fallback untuk teks yang belum mempunyai klip.

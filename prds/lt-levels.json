@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "reviewedAt": "2026-10-10",
+  "reviewedAt": "2026-10-11",
   "source": "https://www.learningtrajectories.org/documents/1691785025839.pdf",
   "scopeAges": [
     3,
@@ -120,7 +120,8 @@
       "scope": "utama",
       "missions": [
         "orders",
-        "tower-lights"
+        "tower-lights",
+        "data-packing"
       ],
       "coverage": "dukungan parsial",
       "sourceLocator": {
@@ -836,7 +837,8 @@
       "prd": "04-adding-subtracting.md",
       "scope": "utama",
       "missions": [
-        "tower-weights"
+        "tower-weights",
+        "harbor-change"
       ],
       "coverage": "dukungan parsial",
       "sourceLocator": {
@@ -1272,8 +1274,10 @@
       "goal": "Membagi bentuk menjadi bagian sama besar",
       "prd": "07-fractions.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "harbor-halves"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 11,
         "levelOnPage": 2
@@ -1286,8 +1290,10 @@
       "goal": "Mengenali separuh melalui pembagian adil",
       "prd": "07-fractions.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "harbor-halves"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 11,
         "levelOnPage": 3
@@ -2149,8 +2155,10 @@
       "goal": "Mengenali kubus dan bola dalam benda akrab",
       "prd": "12-3d-shapes.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "space-solids"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 19,
         "levelOnPage": 2
@@ -2163,8 +2171,10 @@
       "goal": "Mengenali beberapa bangun ruang dan bentuk permukaannya",
       "prd": "12-3d-shapes.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "space-solids"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 19,
         "levelOnPage": 3
@@ -2177,8 +2187,10 @@
       "goal": "Melacak dan menghitung semua permukaan tanpa duplikasi",
       "prd": "12-3d-shapes.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "space-faces"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 19,
         "levelOnPage": 4
@@ -2289,8 +2301,10 @@
       "goal": "Menyusun struktur dengan beberapa hubungan posisi",
       "prd": "13-composing-3d-shapes.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "space-build"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 20,
         "levelOnPage": 6
@@ -2303,8 +2317,10 @@
       "goal": "Merencanakan lengkungan, ruang tertutup, dan atap",
       "prd": "13-composing-3d-shapes.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "space-build"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 20,
         "levelOnPage": 7
@@ -2547,8 +2563,10 @@
       "goal": "Menghubungkan peta bergambar dengan lokasi dunia",
       "prd": "15-spatial-orientation.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "harbor-map"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 22,
         "levelOnPage": 7
@@ -2673,8 +2691,10 @@
       "goal": "Menutup panjang dengan satuan ujung-ke-ujung",
       "prd": "16-length.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "measure-path"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 24,
         "levelOnPage": 6
@@ -2701,8 +2721,10 @@
       "goal": "Mengulang satu satuan dan menghubungkan ukuran satuan dengan jumlah",
       "prd": "16-length.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "measure-unit"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 24,
         "levelOnPage": 8
@@ -2917,8 +2939,10 @@
       "goal": "Mengisi dan membandingkan wadah melalui pemindahan isi",
       "prd": "18-volume.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "measure-water"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 28,
         "levelOnPage": 3
@@ -3170,8 +3194,10 @@
       "goal": "Merekam satu nilai untuk setiap kasus",
       "prd": "20-classification-data.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "data-votes"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 31,
         "levelOnPage": 6
@@ -3184,8 +3210,11 @@
       "goal": "Menggabungkan kasus ke kategori dan membandingkan frekuensi",
       "prd": "20-classification-data.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "data-votes",
+        "data-packing"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 31,
         "levelOnPage": 7
@@ -3198,8 +3227,10 @@
       "goal": "Memilah menurut beberapa atribut sekaligus",
       "prd": "20-classification-data.md",
       "scope": "utama",
-      "missions": [],
-      "coverage": "belum ada misi",
+      "missions": [
+        "data-cross"
+      ],
+      "coverage": "dukungan parsial",
       "sourceLocator": {
         "page": 31,
         "levelOnPage": 8

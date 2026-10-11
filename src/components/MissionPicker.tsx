@@ -1,3 +1,5 @@
+import { Ruler, Droplets, Boxes, Map, ChartColumn, Apple } from "lucide-react";
+import { isMapTwoMission } from "../content/map-two-missions";
 import { useEffect, useRef } from "react";
 import { X, Check, LockKeyhole, ArrowRight } from "lucide-react";
 import { type RegionId, regionInfo } from "../content/regions";
@@ -9,6 +11,25 @@ import { Flower, Lumi } from "./Art";
 import { ObjectArt, Dots } from "../activities/adventure/Objects";
 function MissionPicture({ index }: { index: number }) {
   const m = missions[index];
+  if (isMapTwoMission(m.id)) {
+    const Icon =
+      m.region === "lembah-ukuran"
+        ? m.id === "measure-water"
+          ? Droplets
+          : Ruler
+        : m.region === "desa-data"
+          ? ChartColumn
+          : m.region === "bengkel-ruang"
+            ? Boxes
+            : m.id === "harbor-map"
+              ? Map
+              : Apple;
+    return (
+      <span className="mission-picture">
+        <Icon />
+      </span>
+    );
+  }
   if (m.id in puzzles) {
     const p = puzzles[m.id as keyof typeof puzzles];
     const tokens =
