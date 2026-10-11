@@ -1,7 +1,16 @@
-import { useRef, useState } from "react";
+import {
+  Component,
+  Suspense,
+  lazy,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { SpatialView } from "../../components/SpatialView";
 import {
   useSessionValue,
+  useMissionSession,
   isCount,
   isText,
   isPlaces,
@@ -22,8 +31,7 @@ import {
   mapRouteStep,
   measurementStep,
   solidNames,
-  transferWater,
-  waterHeight,
+  transferWaterAmount,
   votesFor,
   type SolidKind,
 } from "../../pedagogy/map-two";
@@ -42,6 +50,19 @@ const palette = [
   "var(--flower-yellow)",
   "var(--flower-purple)",
 ];
+const WaterPourScene = lazy(() => import("../../components/WaterPourScene"));
+class WaterSceneBoundary extends Component<
+  { fallback: ReactNode; children: ReactNode },
+  { failed: boolean }
+> {
+  state = { failed: false };
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+  render() {
+    return this.state.failed ? this.props.fallback : this.props.children;
+  }
+}
 function Fruit({ kind }: { kind: number }) {
   return (
     <svg viewBox="0 0 80 80" aria-label={fruits[kind]} role="img">
@@ -277,8 +298,7 @@ function MeasurePath(p: Props) {
       </div>
       {p.hint > 0 && (
         <p>
-          Mulai dari awal. Keping berikutnya menyentuh ujung keping
-          sebelumnya.
+          Mulai dari awal. Keping berikutnya menyentuh ujung keping sebelumnya.
         </p>
       )}
       <Feedback message={message} />
@@ -416,76 +436,241 @@ function MeasureUnit(p: Props) {
           </button>
         )}
       </div>
-      {p.hint > 0 && (
-        <p>Alat berikutnya dimulai dari ujung jejak terakhir.</p>
-      )}
+      {p.hint > 0 && <p>Alat berikutnya dimulai dari ujung jejak terakhir.</p>}
       <Feedback message={message} />
     </>
   );
 }
 function Water(p: Props) {
   const total = p.variation % 2 ? 4 : 6;
-  const [water, setWater] = useSessionValue<[number, number]>(
-    "water",
-    [total, 0],
+  const scale = 20;
+  const capacity = total * scale;
+  const session = useMissionSession();
+  const old = session.values.water;
+  const legacyInitial =
+    Array.isArray(old) &&
+    old.length === 2 &&
+    old.every((n) => isCount(n) && n <= total) &&
+    old[0] + old[1] === total
+      ? ([old[0] * scale, old[1] * scale] as [number, number])
+      : ([capacity, 0] as [number, number]);
+  const [amounts, setAmounts] = useSessionValue<[number, number]>(
+    "water-volume-v2",
+    legacyInitial,
     (v) =>
       Array.isArray(v) &&
       v.length === 2 &&
-      v.every((n) => isCount(n) && n <= 6) &&
-      v[0] + v[1] === total,
+      v.every((n) => isCount(n) && n <= capacity) &&
+      v[0] + v[1] === capacity,
   );
-  const { message, check } = useFeedback(p);
+  const [source, setSource] = useState<0 | 1>(0);
+  const [tilts, setTilts] = useState<[number, number]>([0, 0]);
+  const [pouring, setPouring] = useState(false);
+  const [message, setMessage] = useSessionValue("water-message", "", isText);
+  const amountRef = useRef(amounts);
+  const sourceRef = useRef<0 | 1>(source);
+  amountRef.current = amounts;
+  sourceRef.current = source;
+  useEffect(() => {
+    if (!pouring) return;
+    const timer = window.setInterval(() => {
+      const from = sourceRef.current;
+      const next = transferWaterAmount(amountRef.current, from, 1, capacity);
+      if (
+        next[0] === amountRef.current[0] &&
+        next[1] === amountRef.current[1]
+      ) {
+        setPouring(false);
+        setMessage("Wadah itu tidak memiliki air lagi.");
+        return;
+      }
+      amountRef.current = next;
+      setAmounts(next);
+      if (next[from] === 0) {
+        setPouring(false);
+        setMessage("Semua air sudah berpindah dari wadah itu.");
+      }
+    }, 50);
+    return () => window.clearInterval(timer);
+  }, [pouring]);
+  useEffect(() => {
+    if (
+      amounts[0] > 0 &&
+      message === "Semua air sudah berpindah dari wadah itu."
+    )
+      setMessage("");
+  }, [amounts, message, setMessage]);
+  function beginPour(side: 0 | 1) {
+    const destination = 1 - side;
+    if (amountRef.current[side] <= 0) {
+      setMessage("Wadah itu tidak memiliki air lagi.");
+      return;
+    }
+    if (amountRef.current[destination] >= capacity) {
+      setMessage("Wadah tujuan sudah penuh.");
+      return;
+    }
+    setSource(side);
+    setMessage("");
+    p.onAttempt();
+    setPouring(true);
+  }
+  function stopPour() {
+    setPouring(false);
+    setTilts([0, 0]);
+  }
+  function transferOnePart(from: 0 | 1) {
+    p.onAttempt();
+    const next = transferWaterAmount(amountRef.current, from, scale, capacity);
+    if (next[0] === amountRef.current[0] && next[1] === amountRef.current[1]) {
+      setMessage("Tidak ada air yang dapat dipindahkan ke wadah itu.");
+      return;
+    }
+    amountRef.current = next;
+    setAmounts(next);
+    setMessage("Satu bagian air berpindah.");
+  }
+  function checkWater() {
+    p.onAttempt();
+    const valid = amounts[0] === 0 && amounts[1] === capacity;
+    if (valid) {
+      setMessage("");
+      p.onComplete([amounts.join(":")]);
+    } else {
+      setMessage("Pindahkan semua air ke wadah sempit.");
+      p.onMiss();
+    }
+  }
+  const fallback = (
+    <WaterFallback
+      amounts={amounts}
+      total={total}
+      onTransfer={transferOnePart}
+    />
+  );
   return (
     <>
-      <p>Air berpindah dari wadah lebar ke wadah sempit.</p>
-      <div className="water-vessels">
-        {[0, 1].map((i) => (
-          <div key={i}>
-            <strong>{i ? "Wadah sempit" : "Wadah lebar"}</strong>
+      <p>Tarik pegangan ke atas untuk menuang. Lepaskan untuk berhenti.</p>
+      <div className="water-stage" aria-label="Permainan menuang air">
+        <WaterSceneBoundary fallback={fallback}>
+          <Suspense fallback={fallback}>
+            <WaterPourScene
+              amounts={amounts}
+              total={total}
+              source={source}
+              pouring={pouring && tilts[source] >= 32}
+              tilts={tilts}
+              onSource={setSource}
+              onTilt={(side, tilt) => {
+                setTilts((current) => {
+                  const next: [number, number] = [...current];
+                  next[side] = tilt;
+                  return next;
+                });
+                if (tilt >= 32) {
+                  if (sourceRef.current !== side) setSource(side);
+                  if (!pouring) beginPour(side);
+                } else if (tilt < 32 && pouring) setPouring(false);
+              }}
+              onStart={(side) => {
+                setSource(side);
+              }}
+              onStop={stopPour}
+            />
+          </Suspense>
+        </WaterSceneBoundary>
+      </div>
+      <div
+        className="water-pour-controls"
+        aria-label="Kontrol alternatif menuang"
+      >
+        {([0, 1] as const).map((side) => (
+          <button
+            key={side}
+            className={source === side ? "secondary selected" : "secondary"}
+            aria-label={`Tahan untuk menuang dari wadah ${side === 0 ? "lebar" : "sempit"}`}
+            aria-pressed={source === side}
+            onPointerDown={(event) => {
+              event.currentTarget.setPointerCapture(event.pointerId);
+              setSource(side);
+              setTilts(side === 0 ? [50, 0] : [0, 50]);
+              beginPour(side);
+            }}
+            onPointerUp={stopPour}
+            onPointerCancel={stopPour}
+            onLostPointerCapture={stopPour}
+            onKeyDown={(event) => {
+              if (
+                (event.key === "Enter" || event.key === " ") &&
+                !event.repeat
+              ) {
+                event.preventDefault();
+                setSource(side);
+                setTilts(side === 0 ? [50, 0] : [0, 50]);
+                beginPour(side);
+              }
+            }}
+            onKeyUp={(event) => {
+              if (event.key === "Enter" || event.key === " ") stopPour();
+            }}
+            onBlur={stopPour}
+          >
+            Tuang dari wadah {side === 0 ? "lebar" : "sempit"}
+          </button>
+        ))}
+      </div>
+      <button className="primary" onClick={checkWater}>
+        Periksa isi
+      </button>
+      <Feedback message={message} />
+    </>
+  );
+}
+
+function WaterFallback({
+  amounts,
+  total,
+  onTransfer,
+}: {
+  amounts: readonly [number, number];
+  total: number;
+  onTransfer: (from: 0 | 1) => void;
+}) {
+  return (
+    <div className="water-vessels">
+      {([0, 1] as const).map((side) => {
+        const label = side === 0 ? "Wadah lebar" : "Wadah sempit";
+        const fillHeight =
+          180 * (amounts[side] / (total * 20)) * (side === 0 ? 0.4 : 0.8);
+        return (
+          <div key={side}>
+            <strong>{label}</strong>
             <svg
-              viewBox="0 0 220 240"
+              viewBox="0 0 220 220"
               role="img"
-              aria-label={`${i ? "Wadah sempit" : "Wadah lebar"}, ${water[i]} bagian air`}
+              aria-label={`${label} ${amounts[side] ? "berisi air" : "kosong"}`}
             >
               <path
-                d={i ? "M72 30V220H148V30" : "M20 30V220H200V30"}
+                d={side ? "M72 20V200H148V20" : "M20 20V200H200V20"}
                 fill="var(--color-surface-glass)"
                 stroke="var(--color-primary)"
                 strokeWidth="5"
               />
               <rect
-                x={i ? 75 : 23}
-                y={220 - waterHeight(water[i], i ? 70 : 174)}
-                width={i ? 70 : 174}
-                height={waterHeight(water[i], i ? 70 : 174)}
+                x={side ? 75 : 23}
+                y={200 - fillHeight}
+                width={side ? 70 : 174}
+                height={fillHeight}
                 fill="var(--color-water-deep)"
               />
             </svg>
-            <button
-              className="secondary"
-              aria-label={
-                i ? "Kembalikan satu bagian air" : "Tuangkan satu bagian air"
-              }
-              onClick={() => {
-                p.onAttempt();
-                setWater((v) => transferWater(v, i, [6, 6]));
-              }}
-            >
-              {i ? "Kembalikan air" : "Tuangkan air"}
+            <button className="secondary" onClick={() => onTransfer(side)}>
+              Pindahkan satu bagian
             </button>
           </div>
-        ))}
-      </div>
-      <button
-        className="primary"
-        onClick={() =>
-          check(water[0] === 0 && water[1] === total, water.join(":"))
-        }
-      >
-        Periksa isi
-      </button>
-      <Feedback message={message} />
-    </>
+        );
+      })}
+    </div>
   );
 }
 function Votes(p: Props) {

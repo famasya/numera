@@ -1,3 +1,11 @@
+# Menuang air interaktif di Peta 2 — 11 Oktober 2026
+
+- `measure-water` sekarang merender dua wadah Three.js dengan tinggi yang sama dan lebar berbeda. Tarik pegangan ke atas untuk memiringkan wadah; air dan wadah ikut miring. Selama dimiringkan, aliran mengubah isi dengan langkah tetap; lepas untuk menghentikan. Air dapat dituang kembali. Tombol tahan dan fallback SVG mempertahankan alternatif input. Volume lama `[lebar, sempit]` dimigrasikan ke state integer 1/20 bagian tanpa mengubah jumlah.
+- [PRD 26](../prds/26-map-2-direct-interaction.md) mencatat proporsi (jumlah sama ≈40% tinggi pada wadah lebar dan ≈80% pada wadah sempit), prioritas lain, serta acceptance. Chrome `127.0.0.1:3000` menguji tampilan awal, drag untuk menuang, tuang balik, dan state tetap setelah dilepas. Dua misi pendahulu diselesaikan melalui UI hanya pada origin uji terpisah; data `localhost` pengguna tidak disentuh.
+- Typecheck dan build lulus. Tes otomatis tidak dijalankan. Tablet fisik, reduced motion, keyboard/alternatif tahan, error WebGL, serta alur melintasi kedua variasi belum diverifikasi.
+
+---
+
 # Penyelesaian misi tanpa ucapan — 11 Oktober 2026
 
 - Semua misi memakai handler selesai bersama tanpa narasi otomatis. Petunjuk yang masih diputar dihentikan dan status suara dibersihkan. Tombol petunjuk disembunyikan setelah selesai; bunyi pendek nonverbal tetap mengikuti pengaturan suara.

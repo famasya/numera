@@ -23,9 +23,9 @@ Aturan scope ini adalah keputusan produk berbasis rentang yang tertulis, bukan u
 4. [Audit 48 misi](22-existing-missions.md): perilaku kode, dukungan goal, dan gap.
 5. [Peta dan delivery](23-maps-and-delivery.md): paket pengalaman, requirements peta, dan exit criteria.
 
-7. [Petualangan awal peta 2](25-map-2-first-adventures.md): 12 misi awal, interaksi, dan batas dukungan goal.
-
 6. [Penguatan peta 1](24-map-1-reinforcement.md): brief, acceptance, kompatibilitas, dan bukti implementasi.
+7. [Petualangan awal peta 2](25-map-2-first-adventures.md): 12 misi awal, interaksi, dan batas dukungan goal.
+8. [Interaksi langsung peta 2](26-map-2-direct-interaction.md): rencana menuang air 3D, susun balok, eksplorasi bangun, dan prioritas interaksi 2D; belum diimplementasikan.
 
 ## Sections dan goal eksplisit
 

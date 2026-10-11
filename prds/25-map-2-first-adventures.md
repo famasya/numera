@@ -2,6 +2,8 @@
 
 Status: 12 misi awal diimplementasikan. Bukti dan batas pengujian ada di [handoff](../docs/handoff.md).
 
+Peningkatan interaksi berikutnya direncanakan dalam [PRD interaksi langsung](26-map-2-direct-interaction.md), dimulai dari menuang air 3D. Requirements baru belum mengganti perilaku runtime di dokumen ini.
+
 ## Cakupan dan state
 
 Permintaan pengguna 11 Oktober 2026: mulai peta 2. Paket implementasi awal memakai Pulau Para Pembuat dengan empat wilayah, masing-masing tiga misi. Jumlah ini mengikuti dua belas brief berikut; bukan kuota akhir atau penyelesaian seluruh roadmap LT. Peta 1 tetap 48 misi.

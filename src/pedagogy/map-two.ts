@@ -58,6 +58,28 @@ export function transferWater(
   next[to]++;
   return next;
 }
+export function transferWaterAmount(
+  values: readonly [number, number],
+  from: number,
+  requested: number,
+  capacity: number,
+): [number, number] {
+  if (
+    (from !== 0 && from !== 1) ||
+    !Number.isInteger(requested) ||
+    requested <= 0 ||
+    !Number.isInteger(capacity) ||
+    capacity <= 0
+  )
+    return [...values];
+  const to = 1 - from;
+  const moved = Math.min(requested, values[from], capacity - values[to]);
+  if (moved <= 0) return [...values];
+  const next: [number, number] = [...values];
+  next[from] -= moved;
+  next[to] += moved;
+  return next;
+}
 export function halfValid(parts: readonly (number | null)[]) {
   return (
     parts.length > 0 &&

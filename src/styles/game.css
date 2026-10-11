@@ -3483,6 +3483,27 @@ button svg {
   display: flex;
   gap: var(--space-4);
 }
+.water-stage {
+  width: min(100%, var(--puzzle-board-width));
+  height: var(--water-scene-height);
+  overflow: hidden;
+  border: var(--size-2) solid var(--color-border);
+  border-radius: var(--radius-scene);
+  background: var(--color-surface);
+  touch-action: none;
+}
+.water-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+.water-pour-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
 .water-vessels > div {
   display: flex;
   flex-direction: column;
@@ -3722,6 +3743,9 @@ button svg {
   .map2-board .water-vessels svg {
     width: var(--size-150);
     height: var(--size-150);
+  }
+  .map2-board .water-stage {
+    height: var(--water-scene-compact-height);
   }
 }
 
